@@ -14,9 +14,13 @@ SITEURL = 'http://majazf.ca/blog'
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
-CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
+CATEGORY_FEED_ATOM = 'feeds/cat-%s.atom.xml'
+TAG_FEED_ATOM = 'feeds/%s.atom.xml'
+FEED_DOMAIN = SITEURL
 
 DELETE_OUTPUT_DIRECTORY = True
+
+IGNORE_FILES = ['.#*', 'test_*.md', 'tmp_*.md',]
 
 # Following items are often useful when publishing
 
