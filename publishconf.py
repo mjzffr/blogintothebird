@@ -25,4 +25,4 @@ IGNORE_FILES = ['.#*', 'test_*.md', 'tmp_*.md',]
 # Following items are often useful when publishing
 
 #DISQUS_SITENAME = ""
-#GOOGLE_ANALYTICS = ""
+GOOGLE_ANALYTICS = "UA-45941192-1"
