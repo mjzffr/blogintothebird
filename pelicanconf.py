@@ -4,8 +4,8 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Maja Z. Frydrychowicz'
 SITENAME = u'maja_frydrychowicz.blog'
-GITHUB_URL = 'http://github.com/mjzffr/'
-TWITTER_USERNAME = 'maja_zf'
+#GITHUB_URL = 'http://github.com/mjzffr/'
+#TWITTER_USERNAME = 'maja_zf'
 
 TIMEZONE = 'America/New_York'
 DEFAULT_DATE = 'fs'
@@ -30,7 +30,7 @@ AUTHORS_URL = False
 AUTHORS_SAVE_AS = False
 
 # Social widget
-SOCIAL = (('twitter', 'http://twitter.com/maja_zf'),)
+#SOCIAL = (('twitter', 'http://twitter.com/maja_zf'),)
 
 DEFAULT_PAGINATION = 0
 

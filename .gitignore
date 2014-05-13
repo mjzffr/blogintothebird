@@ -1,7 +1,8 @@
 #pelican
 output/
 cache/
-*.pid
+pelican.pid
+srv.pid
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
