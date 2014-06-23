@@ -1,5 +1,6 @@
 Title: Project Management at Mozilla
 Date: 2014-06-05 20:41
+Modified: 2014-06-18 
 Tags: mozilla, foss
 Slug: bugzilla-github
 Author: Maja Z. Frydrychowicz
