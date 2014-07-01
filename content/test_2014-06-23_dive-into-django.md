@@ -12,4 +12,16 @@ Followed urls.py
 Testing with mockmyid and persona
 Class-based generic views
 Resources that I found useful
+Mixins
+Jinja2
 
+
+So I wanted to start contributing to a Django project a few weeks ago. 
+
+
+
+What I knew and what my first contribution ended up being.
+
+Some mistakes I made
+
+Aside: Django vs Playdoh
