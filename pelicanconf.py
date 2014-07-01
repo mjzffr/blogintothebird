@@ -23,7 +23,7 @@ TRANSLATION_FEED_ATOM = None
 #           ('Jinja2', 'http://jinja.pocoo.org/'),
 #           ('You can modify those links in your config file', '#'),)
 LINKS = False
-MENUITEMS = (('majazf.ca', 'http://majazf.ca/'),)
+#MENUITEMS = (('Intro', 'http://majazf.ca/'),)
 
 DISPLAY_CATEGORIES_ON_MENU = False
 AUTHORS_URL = False
