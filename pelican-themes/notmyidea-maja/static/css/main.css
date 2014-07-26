@@ -50,12 +50,12 @@ hr { border: 2px solid #EEEEEE; }
 a {outline: 0;}
 a img {border: 0px; text-decoration: none;}
 a:link, a:visited {
-	color: #F10017;
+	color: #F10018;
 	padding: 0 1px;
 	text-decoration: none;
 }
 a:hover, a:active {
-	background-color: #F10017;
+	background-color: #F10018;
 	color: #fff;
 	text-decoration: none;
 	text-shadow: 1px 1px 1px #333;
@@ -171,8 +171,6 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 	}
 	#banner h1 a:hover, #banner h1 a:active {
 		background: none;
-		/* color: #F10017;
-		text-shadow: none;*/
 	}
 
 	#banner h1 strong {font-size: 0.36em; font-weight: normal;}
@@ -251,7 +249,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 }
 #featured figure img {display: block; float: right;}
 
-#featured h2 {color: #F10017; font-size: 1.714em; margin-bottom: 0.333em;}
+#featured h2 {color: #F10018; font-size: 1.714em; margin-bottom: 0.333em;}
 #featured h3 {font-size: 1.429em; margin-bottom: .5em;}
 
 #featured h3 a:link, #featured h3 a:visited {color: #000305; text-decoration: none;}
@@ -292,7 +290,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 #extras ul {list-style: none; margin: 0;}
 #extras li {border-bottom: 1px solid #fff;}
 #extras h2 {
-	color: #F10017;
+	color: #F10018;
 	font-size: 1.429em;
 	margin-bottom: .25em;
 	padding: 0 3px;
