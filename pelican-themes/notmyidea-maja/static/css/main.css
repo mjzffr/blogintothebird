@@ -50,19 +50,19 @@ hr { border: 2px solid #EEEEEE; }
 a {outline: 0;}
 a img {border: 0px; text-decoration: none;}
 a:link, a:visited {
-	color: #C74350;
+	color: #F10017;
 	padding: 0 1px;
 	text-decoration: none;
 }
 a:hover, a:active {
-	background-color: #C74350;
-	color: #fff;
+	background-color: #F10017;
 	text-decoration: none;
 	text-shadow: 1px 1px 1px #333;
 }
 
 h1 a:hover {
-    background-color: inherit
+    background-color: inherit;
+    color: inherit;
 }
 
 /* Paragraphs */
@@ -170,8 +170,8 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 	}
 	#banner h1 a:hover, #banner h1 a:active {
 		background: none;
-		color: #C74350;
-		text-shadow: none;
+		/* color: #F10017;
+		text-shadow: none;*/
 	}
 
 	#banner h1 strong {font-size: 0.36em; font-weight: normal;}
@@ -202,10 +202,18 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 		padding: 5px 1.5em;
 		text-decoration: none;
 	}
+
+	#banner nav a[type$='atom+xml'], a[type$='rss+xml'] {
+		background-position: right center;
+		background-repeat: no-repeat;
+		background-image: url('../images/icons/feed-icon-14x14.png');
+		padding-right: 1.2em;
+
+	}
 	#banner nav a:hover, #banner nav a:active,
 	#banner nav .active a:link, #banner nav .active a:visited {
-		background: #C74451;
-		color: #fff;
+		background-color: #000;
+		color: #E0DED5;
 		text-shadow: none !important;
 	}
 
@@ -242,7 +250,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 }
 #featured figure img {display: block; float: right;}
 
-#featured h2 {color: #C74451; font-size: 1.714em; margin-bottom: 0.333em;}
+#featured h2 {color: #F10017; font-size: 1.714em; margin-bottom: 0.333em;}
 #featured h3 {font-size: 1.429em; margin-bottom: .5em;}
 
 #featured h3 a:link, #featured h3 a:visited {color: #000305; text-decoration: none;}
@@ -263,6 +271,18 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 	-webkit-border-radius: 10px;
 }
 
+#twitter-timeline {
+	background: #fff;
+	margin-bottom: 2em;
+	overflow: hidden;
+	padding: 20px 20px;
+	width: 760px;
+
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
 /*
 	Extras
 *****************/
@@ -271,7 +291,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 #extras ul {list-style: none; margin: 0;}
 #extras li {border-bottom: 1px solid #fff;}
 #extras h2 {
-	color: #C74350;
+	color: #F10017;
 	font-size: 1.429em;
 	margin-bottom: .25em;
 	padding: 0 3px;

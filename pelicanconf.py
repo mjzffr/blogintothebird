@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = u'Maja Z. Frydrychowicz'
 SITENAME = u'Maja Z. Frydrychowicz'
 #GITHUB_URL = 'http://github.com/mjzffr/'
-#TWITTER_USERNAME = 'maja_zf'
+#TWITTER_USERNAME = '@maja_zf'
 
 TIMEZONE = 'America/New_York'
 DEFAULT_DATE = 'fs'
@@ -23,7 +23,7 @@ TRANSLATION_FEED_ATOM = None
 #           ('Jinja2', 'http://jinja.pocoo.org/'),
 #           ('You can modify those links in your config file', '#'),)
 LINKS = False
-#MENUITEMS = (('Intro', 'http://majazf.ca/'),)
+#MENUITEMS = (('Intro', 'http://www.majazf.ca/'),)
 
 DISPLAY_CATEGORIES_ON_MENU = False
 AUTHORS_URL = False
