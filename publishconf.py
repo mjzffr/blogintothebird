@@ -12,7 +12,7 @@ from pelicanconf import *
 
 SITEURL = 'http://www.majazf.ca/blog'
 HOMEURL = 'http://www.majazf.ca'
-RELATIVE_URLS = False
+#RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/cat-%s.atom.xml'

@@ -31,7 +31,7 @@ AUTHORS_SAVE_AS = False
 
 # Social widget
 #SOCIAL = (('twitter', 'http://twitter.com/maja_zf'),)
-
+TWITTER_BLUB = False
 DEFAULT_PAGINATION = 0
 
 # Uncomment following line if you want document-relative URLs when developing

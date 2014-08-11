@@ -1,9 +1,9 @@
-Title: Details
+Title: About
 Category: pages
 Slug: about-maja
 Author: Maja Z. Frydrychowicz
 
-I care about free and open source software, an open web, education and things like that. I enjoy Python and its wonderful community. I'm "never graduating" from [Hacker School](http://www.hackerschool.com). My professional life is centered around programming and computer science -- it's the coolest. I used to do a lot of formal math and I vaguely miss it, but we can't have time for everything. Overall, I aim to spend as little time at a computer as possible (ha!) and I bake pretty delightful cookies. 
+My [professional life](https://www.linkedin.com/in/mfrydrychowicz) is centered around programming and computer science -- it's the coolest. I care about free and open source software, an open web,  computing education and that sort of thing. I enjoy Python and its wonderful community. I'm "never graduating" from [Hacker School](http://www.hackerschool.com). I used to do a lot of formal math and I vaguely miss it, but we can't have time for everything. Sometimes, I bake fairly excellent cookies. Other times, I go exploring and take [pretty pictures](https://www.flickr.com/photos/majusia/) of what I find. 
 
 Recommended English pronunciation: *__ma__-ya free-dree-__ha__-vitch* 
 
