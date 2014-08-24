@@ -17,7 +17,9 @@ Summary: A description of a "typical" two weeks during my OPW internship with Mo
 
 Throughout my OPW[^1] internship with Mozilla QA[^2] I've been keeping an informal log in outline form[^3]. In it, I briefly describe what I accomplish (or fail to accomplish) each day, problems I encounter, who I talk to about them, which meetings I attend, what I read, useful tricks I learn, etc. So far, I have about 60-days worth of these tiny log entries about Mozilla.  Here's what they look like:
 
+<div style="text-align:center" markdown="1">
 ![Checkvist Mozilla Log Screenshot](images/checkvist-screenshot.png)
+</div>
 
 Day-to-day, the log helps me answer questions like "How did I solve this weird configuration problem three weeks ago?" or "What should I ask about at the next team meeting?" Writing also generally helps me think through a task, and the log is a quick and effective outlet for that. The other major benefit is that I can take a step back and see the overall progress of my projects.
 
@@ -34,18 +36,18 @@ Based on my handy log, I'll answer a slightly more specific question:
 >> "What did Maja do during a typical week while working on a Django project for Mozilla QA?"
 
 ## Routines
-Often, I start my day by skimming my latest "bugmail" (updates from Bugzilla) and checking my Bugzilla dashboard to see if I need to follow up on anything immediately. 
+Often, I start my day by skimming my latest "bug mail" (updates from Bugzilla) and checking my Bugzilla dashboard to see if I need to follow up on anything immediately. 
 
-The other regular occurance is about 2 hours of video meetings per week. I meet with my mentor once a week to discuss my general progress and my post-internship plans. I lurk at one QA team meeting almost every week, where I mostly didn't have enough context to understand much. My mentor filled me in on some things and my understanding gradually improved. There are also two regular meetings for [One and Done][oneanddone], the project I'm contributing to: a weekly technical meeting to discuss the design of new features, and a biweekly check-in meeting with project managers, developers and a few key users.
+The other regular occurrence is about 2 hours of video meetings per week. I meet with my mentor once a week to discuss my general progress and my post-internship plans. I lurk at one QA team meeting almost every week, where I mostly don't have enough context to understand much. My mentor filled me in on some things and my understanding gradually improved. There are also two regular meetings for [One and Done][oneanddone], the project I'm contributing to: a weekly technical meeting to discuss the design of new features, and a biweekly check-in meeting with project managers, developers and a few key users.
 
 
 ## Week 3
 
 The early weeks of the internship involved a lot of reading and trying things out, of course. At this point, I was finishing up the official Django tutorial as well as responding to some administrative requests about the internship. 
 
-Just for fun, I used vim throughout my Django learnings to rediscover some handy vim commands. I also spent time on applying the tutorial concepts to  the One and Done source code, and thus discovered what other parts of Django I need to become familiar with, like generic class-based views. 
+Just for fun, I used vim throughout my Django learnings to rediscover some handy vim commands. I also applied the tutorial concepts to the One and Done source code as much as I could, and thus discovered what other parts of Django I need to become familiar with, like generic class-based views. 
 
-I gradually became more familiar with how the One and Done code is structured by exploring its models and its URLconf, and populating my local database with example data.
+I gradually became more familiar with how the One and Done code is structured by looking at how its models are used, poking at its URLconf, and populating my local database with example data.
 
 ## Week 5
 
@@ -53,9 +55,9 @@ At this point, I was just about finished with my first substantial [pull request
 
 I actually spent a bunch of time getting the unit tests to run in my dev environment, which is on a Linux virtual machine. My local copy of the project is stored in a directory that is shared between my Linux guest OS and Windows host OS, which happens to rely on file permissions that the [nose](https://nose.readthedocs.org/en/latest/) testing library doesn't like. In the end, I chose to have a clone of the project in a non-shared directory that I used just for running unit tests.
 
-My work log also describes in detail how unintended changes to my development branch in git turned my Github pull request into a giant, unreadable mess. Aaah! (Be careful what you branch from and what you merge with, friends.) I had to close my original pull request and make a new, clean one, which was fairly embarrassing. I remember now that on that day my friend and I were coworking in my apartment to battle [the loneliness of our remote jobs]({filename}./2014-05-23_remote-work.md), and she generously listened to me venting my misery about the incident. :) In retrospect, I learned a lot about git.
+My work log also describes in detail how unintended changes to my development branch in git turned my Github pull request into a giant, unreadable mess. Aaah! (Be careful what you branch from and what you merge with, friends.) I had to close my original pull request and make a new, clean one, which was fairly embarrassing. Now I remember that on that day my friend and I were co-working in my apartment to battle [the loneliness of remote work]({filename}./2014-05-23_remote-work.md), and she generously listened to me venting my misery about the incident. :) In retrospect, I learned a lot about git.
 
-Later that week, that same pull request got merged and I started investigating a bug I ran into in one of the libraries our project relies on. This involved asking some questions on IRC. 
+Later that week, that same pull request got merged and I started investigating a bug I ran into in one of the libraries our project relies on, which involved asking some questions on IRC. 
 
 All around, a good week.
 
@@ -73,6 +75,6 @@ I also contributed my first few code reviews: the week before I missed an issue 
 By the end of the week, I was focused on sketching out the functionality and implementation of a [new One and Done feature](https://bugzilla.mozilla.org/show_bug.cgi?id=1030972). I enjoyed working with the project managers to define the feature requirements. Figuring out how to implement them required a few more weeks of research and learning on my part, but it all worked out in the end.
 
 
-## This is why I like work logs!
+# This is why I like work logs!
 
-Reviewing my work log to write this article was eye-opening to me. It clearly shows all the ups and downs I experienced during my internship. On some days, I felt quite frustrated, stuck, discouraged, and all that bad stuff. So, I like how the log shows that feeling crappy for a few days here and there totally doesn't matter, overall. I learned a lot in the past couple of months and it's incredibly satisfying to see that itemized in one big list. (I'm one of those list-loving people, heh, so no surprise there.)
+Reviewing my work log to write this article was eye-opening for me, especially due to the perspective it offers of the ups and downs I experienced during my internship. On some days, I felt quite frustrated, stuck, discouraged, and all that bad stuff. So, I like how the log shows that feeling crappy for a few days here and there totally doesn't matter overall. I learned a lot in the past couple of months and it's incredibly satisfying to see that itemized in one big list.

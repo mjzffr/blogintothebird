@@ -276,7 +276,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 	-webkit-border-radius: 10px;
 }
 
-#content a[href^="http://"], #content a[href^="https://"]
+#content a[href^="http://"], #content a[href^="https://"], #featured a[href^="http://"], #featured a[href^="https://"]
 {
     background: url("../images/icons/Icon_External_Link_red.png") center right no-repeat;
     padding-right: 14px;
