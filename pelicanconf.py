@@ -38,3 +38,6 @@ DEFAULT_PAGINATION = 0
 RELATIVE_URLS = True
 
 THEME = "pelican-themes/notmyidea-maja"
+
+#MD_EXTENSIONS = ['fenced_code', 'codehilite(css_class=highlight, linenums=True)', 'extra']
+MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra']
