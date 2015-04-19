@@ -10,8 +10,8 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = 'http://www.majazf.ca/blog'
-HOMEURL = 'http://www.majazf.ca'
+SITEURL = 'http://www.erranderr.com/blog'
+HOMEURL = 'http://www.erranderr.com'
 #RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
@@ -27,5 +27,5 @@ IGNORE_FILES = ['.#*', 'test_*.md', 'tmp_*.md',]
 
 #DISQUS_SITENAME = ""
 GOOGLE_ANALYTICS = "UA-45941192-1"
-TWITTER_USERNAME = "@maja_zf"
+TWITTER_USERNAME = "@impossibus"
 TWITTER_WIDGET_ID = 493058448800497664
