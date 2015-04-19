@@ -12,7 +12,8 @@
 @import url("reset.css");
 @import url("pygment.css");
 @import url("typogrify.css");
-@import url(//fonts.googleapis.com/css?family=Yanone+Kaffeesatz&subset=latin);
+@import url(//fonts.googleapis.com/css?family=Lato&subset=latin);
+
 
 /***** Global *****/
 /* Body */
@@ -38,8 +39,8 @@ h6 {font-size: 1em}		/* 14px */
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 400;
 	line-height: 1.1;
-	margin-bottom: .8em;
-    font-family: 'Yanone Kaffeesatz', arial, serif;
+	margin-bottom: 0.6em;
+    font-family: 'Lato', arial, sans-serif;
 }
 
 h3, h4, h5, h6 { margin-top: .8em; }
@@ -55,10 +56,7 @@ a:link, a:visited {
 	text-decoration: none;
 }
 a:hover, a:active {
-	background-color: #F10018;
-	color: #fff;
-	text-decoration: none;
-	text-shadow: 1px 1px 1px #333;
+	text-decoration: underline;
 }
 
 h1 a:hover {
@@ -278,7 +276,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 
 #content a[href^="http://"], #content a[href^="https://"], #featured a[href^="http://"], #featured a[href^="https://"]
 {
-    background: url("../images/icons/Icon_External_Link_red.png") center right no-repeat;
+    background: url("../images/icons/external-link-red.png") center right no-repeat;
     padding-right: 14px;
     padding-top:2px;
 }
