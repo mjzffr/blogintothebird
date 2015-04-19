@@ -40,7 +40,8 @@ I was recently in Rainbows' position. I finally noticed that something was wrong
     FATAL ERROR - The following SQL query failed: DROP TABLE tasks_taskarea CASCADE;
     The error was: (1051, "Unknown table 'tasks_taskarea'")
     >snip
-    KeyError: "The model 'taskarea' from the app 'tasks' is not available in this migration."
+    KeyError: "The model 'taskarea' from the app 'tasks' is not available in
+    this migration."
 
 In my instance of the Sparkles-Rainbows story, Migration 3 and Migration 5 both drop the TaskArea table; I'm trying to apply Migration 5, and South  grumbles in response because I had never reversed Migration 3. As far as South knows, there's no such thing as a TaskArea table. 
 
@@ -75,18 +76,19 @@ I figure out which commit added the migration I need to reverse:
 ```sh
 # Display commit log along with names of files affected by each commit. 
 # Once in less, I searched for '0010_auto__del' to get to the right commit.
-$ git log --name-status | less
+git log --name-status | less
 ```
 
 What that key information, the following sequence of commands tidies everything up:
 
 ```sh
 # Switch to the commit that added migration 0010_auto__del
-$ git checkout e67fe32c
+git checkout e67fe32c
 # Migrate backward to a happy migration; I chose 0008 to be safe. 
 # ./manage.py migrate [appname] [migration]
-$ ./manage.py migrate oneanddone.tasks 0008
-$ git checkout master
-# Sync the database and migrate all the way forward using the most up-to-date migrations.
-$ ./manage.py syncdb && ./manage.py migrate
+./manage.py migrate oneanddone.tasks 0008
+git checkout master
+# Sync the database and migrate all the way forward using the most 
+# up-to-date migrations.
+./manage.py syncdb && ./manage.py migrate
 ```
