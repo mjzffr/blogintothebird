@@ -18,7 +18,7 @@
 /***** Global *****/
 /* Body */
 body {
-    background: #F5F4EF;
+    background: #938687; /* #F5F4EF; */
     color: #000305;
     font-size: 87.5%; /* Base font size: 14px */
     font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -50,14 +50,14 @@ hr { border: 2px solid #EEEEEE; }
 
 /* Anchors */
 a {outline: 0;}
-a img {border: 0px; text-decoration: none;}
+a img {border: 0px black; text-decoration: none;}
 a:link, a:visited {
 	color: #F10018;
 	padding: 0 1px;
 	text-decoration: none;
 }
 a:hover, a:active {
-	text-decoration: underline;
+	color: #000;
 }
 
 h1 a:hover {
@@ -183,6 +183,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 		margin: 0 auto 2em auto;
 		padding: 0;
 		text-align: center;
+		font-weight: 700;
 		width: 800px;
 
 		border-radius: 5px;
@@ -211,7 +212,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 	#banner nav a:hover, #banner nav a:active,
 	#banner nav .active a:link, #banner nav .active a:visited {
 		background-color: #000;
-		color: #E0DED5;
+		color: #EDEAEB;
 		text-shadow: none !important;
 	}
 
@@ -264,7 +265,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 }
 
 #content {
-	background: #fff;
+	background: #EDEAEB;
 	margin-bottom: 2em;
 	overflow: hidden;
 	padding: 20px 20px;
@@ -283,7 +284,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 }
 
 #twitter-timeline {
-	background: #fff;
+	background: #EDEAEB;
 	margin-bottom: 2em;
 	overflow: hidden;
 	padding: 20px 20px;
@@ -370,7 +371,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 	About
 *****************/
 #about {
-	background: #fff;
+	background: #EDEAEB;
 	font-style: normal;
 	margin-bottom: 2em;
 	overflow: hidden;
@@ -391,10 +392,14 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 
 #about .bio {float: right; width: 500px;}
 
+
 /*
 	Footer
 *****************/
 #contentinfo {padding-bottom: 2em; text-align: right;}
+
+#contentinfo a:link, a:visited { color:#BD091C;}
+
 
 /***** Sections *****/
 /* Blog */
