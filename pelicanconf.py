@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'Maja Z. Frydrychowicz'
-SITENAME = u'Maja Z. Frydrychowicz'
+AUTHOR = u'Maja Frydrychowicz'
+SITENAME = u'Maja Frydrychowicz'
 #GITHUB_URL = 'http://github.com/mjzffr/'
 #TWITTER_USERNAME = '@maja_zf'
 
@@ -36,6 +36,8 @@ DEFAULT_PAGINATION = 0
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
+
+TYPOGRIFY = True
 
 THEME = "pelican-themes/notmyidea-maja"
 

@@ -54,36 +54,37 @@
                 </div>
             </section>
         {% endif %} !-->
-        <section id="extras" class="body">
-        {% if LINKS %}
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                        {% for name, link in LINKS %}
-                            <li><a href="{{ link }}">{{ name }}</a></li>
-                        {% endfor %}
-                        </ul>
-                </div><!-- /.blogroll -->
+        {% if LINKS or SOCIAL %}
+            <section id="extras" class="body">
+            {% if LINKS %}
+                    <div class="blogroll">
+                            <h2>blogroll</h2>
+                            <ul>
+                            {% for name, link in LINKS %}
+                                <li><a href="{{ link }}">{{ name }}</a></li>
+                            {% endfor %}
+                            </ul>
+                    </div><!-- /.blogroll -->
+            {% endif %}
+            {% if SOCIAL %}
+                    <div class="social">
+                            <!--<h2>social</h2>-->
+                            <ul>
+                            {% for name, link in SOCIAL %}
+                                <li><a href="{{ link }}">{{ name }}</a></li>
+                            {% endfor %}
+                            </ul>
+                    </div><!-- /.social -->
+            {% endif %}
+            </section><!-- /#extras -->
         {% endif %}
-        {% if SOCIAL %}
-                <div class="social">
-                        <!--<h2>social</h2>-->
-                        <ul>
-                        {% for name, link in SOCIAL %}
-                            <li><a href="{{ link }}">{{ name }}</a></li>
-                        {% endfor %}
-                        </ul>
-                </div><!-- /.social -->
-        {% endif %}
-        </section><!-- /#extras -->
-
         <footer id="contentinfo" class="body">
 
                 <address id="about" class="vcard body">
                 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Maja Frydrychowicz</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
                 </address><!-- /#about -->
 
-                <p>Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.<br/> Based on theme by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                <p id="acknowledge">Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.<br/> Based on theme by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
 {% include 'analytics.html' %}
