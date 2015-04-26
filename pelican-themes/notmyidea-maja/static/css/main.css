@@ -163,8 +163,25 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 /*
 	Header
 *****************/
+#grook {
+  position:fixed;
+  top: 0;
+  left: 0;
+  font-size: 8px;
+  background: #EDEAEB;
+  color: #938687;
+  width: 100%;
+  z-index: 100;
+  text-align: right;
+}
+
+#grook a {
+	color: #938687;
+	text-decoration: none;
+}
+
 #banner {
-	margin: 0 auto;
+	margin: 10px auto 0 auto;
 	padding: 2.5em 0 0 0;
 }
 
