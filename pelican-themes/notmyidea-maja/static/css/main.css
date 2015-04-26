@@ -167,7 +167,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
   position:fixed;
   top: 0;
   left: 0;
-  font-size: 8px;
+  font-size: 10px;
   background: #EDEAEB;
   color: #938687;
   width: 100%;
@@ -181,7 +181,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 }
 
 #banner {
-	margin: 10px auto 0 auto;
+	margin: 20px auto 0 auto;
 	padding: 2.5em 0 0 0;
 }
 
@@ -286,7 +286,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 *****************/
 .footnote-ref {
 	vertical-align: super;
-	font-size: 0.3em;
+	font-size: 0.75em;
 
 }
 
