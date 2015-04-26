@@ -42,3 +42,5 @@ TYPOGRIFY = True
 THEME = "pelican-themes/notmyidea-maja"
 
 MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra']
+
+FAVICON = 'theme/images/icons/favicon.png'

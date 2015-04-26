@@ -10,7 +10,9 @@
         {% if FEED_ALL_RSS %}
         <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
         {% endif %}
-
+        {% if FAVICON %}
+        <link href="{{ SITEURL }}/{{ FAVICON }}" rel="icon" type="image/png">
+        {% endif %}
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
