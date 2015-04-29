@@ -44,3 +44,7 @@ THEME = "pelican-themes/notmyidea-maja"
 MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra']
 
 FAVICON = 'theme/images/icons/favicon.png'
+
+MOBILE_CSS_FILE = 'mobile.css'
+
+IGNORE_FILES = ['.#*', 'test_*.md', 'tmp_*.md',]

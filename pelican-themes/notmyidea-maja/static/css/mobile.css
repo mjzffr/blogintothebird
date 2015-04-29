@@ -1,0 +1,73 @@
+body{
+	font-size: 100%;
+	background: #EDEAEB;
+}
+
+#grook {
+	font-size: 0.4em;
+}
+
+.body, #featured, #content, #contentinfo {
+	width: 90%;
+}
+
+#banner nav, #banner nav ul, #license {
+	width: 100%;
+}
+
+#banner nav {
+	font-size: 1.8em;
+	margin: 0px auto 1em;
+	padding: 5px;
+}
+
+#banner nav a:link, #banner nav a:visited {
+	padding: 5px 0.5em;
+}
+
+#banner nav a[type$='atom+xml'], a[type$='rss+xml'] {
+		background-image: none;
+}
+
+.post-info{
+	width: 40%;
+	padding: 0px;
+	font-size:1em;
+}
+
+#contentinfo {
+	font-size: 75%;
+	text-align: left;
+}
+
+#license {
+	padding:5px;
+}
+
+.entry-title{
+	font-size: 2.5em;
+}
+
+pre {
+	font-size:115%;
+}
+
+
+@media screen and (max-width: 699px) {
+  #banner h1 {
+  	font-size: 3em;
+  }
+
+  #banner nav {
+  	font-size: 1.5em;
+  }
+
+  .entry-title{
+    font-size: 2em;
+  }
+
+  h1 {
+	font-size: 1.8em;
+  }
+}
+
