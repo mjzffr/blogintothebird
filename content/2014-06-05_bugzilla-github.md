@@ -3,7 +3,7 @@ Date: 2014-06-05 20:41
 Modified: 2014-06-18 
 Tags: mozilla, foss
 Slug: bugzilla-github
-Author: Maja Z. Frydrychowicz
+Author: Maja Frydrychowicz
 Summary: How One and Done uses Github pull requests and bugs in Bugzilla.
 
 One of the most interesting aspects of my [OPW](https://wiki.gnome.org/OutreachProgramForWomen) internship is learning how contributions and planning are managed in Mozilla projects. So huge! So many contributors! Ahhh! Mozilla is known for giant projects like Firefox, but it also builds lots of supporting tools and websites. All projects, big and small, are managed using Bugzilla and often a mix of other tools, depending on the project team. My observations are based mostly on one project that I've become familiar with: [One and Done](https://github.com/mozilla/oneanddone). Warning: I'm going to say "Bugzilla" a lot.

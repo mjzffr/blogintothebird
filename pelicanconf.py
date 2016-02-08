@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Maja Frydrychowicz'
-SITENAME = u'err & err (less & less)'
+SITENAME = u'err &err'
 #GITHUB_URL = 'http://github.com/mjzffr/'
 #TWITTER_USERNAME = '@maja_zf'
 

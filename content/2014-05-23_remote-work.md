@@ -2,7 +2,7 @@ Title: Working Remotely is... Hard? Different? Strange?
 Date: 2014-05-23 15:30
 Tags: opw, mozilla, foss, feelings
 Slug: remote-work
-Author: Maja Z. Frydrychowicz
+Author: Maja Frydrychowicz
 
  My internship with Mozilla involves work within a team whose members are located around the world and not where I am. Some are Mozilla employees or maybe contractors, some are interns like me, some might be volunteers. The key point is that it's not just me with my mentor, focused on our own area: I need to find my voice in this in group of people, and that's where working remotely gets hard. 
 

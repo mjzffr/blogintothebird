@@ -3,7 +3,7 @@ Date: 2014-07-04 18:00
 Modified: 2014-07-25
 Tags: mozilla, foss, opw, south, git, database, django
 Slug: borked-migrations
-Author: Maja Z. Frydrychowicz
+Author: Maja Frydrychowicz
 Summary: How to rewrite database migration history in a Django project with South and git.
 
 [playdoh]: https://github.com/mozilla/playdoh

@@ -3,7 +3,7 @@ Date: 2014-08-07
 Modified: 2014-08-23
 Tags: opw, mozilla, foss
 Slug: opw-snapshot
-Author: Maja Z. Frydrychowicz
+Author: Maja Frydrychowicz
 Summary: A description of a "typical" two weeks during my OPW internship with Mozilla.
 
 [checkvist]:https://checkvist.com/

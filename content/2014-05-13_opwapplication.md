@@ -2,7 +2,7 @@ Title: Dive In! Applying to the FOSS Outreach Program for Women
 Date: 2014-05-13 13:00
 Tags: mozilla, career, opw, foss
 Slug: applying-to-opw
-Author: Maja Z. Frydrychowicz
+Author: Maja Frydrychowicz
 Summary: I got an internship with Mozilla through GNOME's Outreach Program for Women (!). The application process alone taught me a lot about open source contributions and the community around them. 
 
 I just started an internship with Mozilla's [Quality Assurance](https://quality.mozilla.org/) team as part of the GNOME Foundation's [Outreach Program for Women](https://gnome.org/opw/) (OPW), but I almost didn't even apply! In fact, I had decided *not* to apply for silly reasons, and then a week before the *extended* deadline I abruptly changed my mind -- after some encouragement from the wonderful people at my [Hacker School](https://www.hackerschool.com/) batch. (As it happens, I almost didn't apply to Hacker School either. This is a pattern.)
