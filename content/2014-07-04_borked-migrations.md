@@ -79,7 +79,7 @@ I figure out which commit added the migration I need to reverse:
 git log --name-status | less
 ```
 
-What that key information, the following sequence of commands tidies everything up:
+With that key information, the following sequence of commands tidies everything up:
 
 ```sh
 # Switch to the commit that added migration 0010_auto__del
