@@ -18,7 +18,7 @@ Summary: A description of a "typical" two weeks during my OPW internship with Mo
 Throughout my OPW[^1] internship with Mozilla QA[^2] I've been keeping an informal log in outline form[^3]. In it, I briefly describe what I accomplish (or fail to accomplish) each day, problems I encounter, who I talk to about them, which meetings I attend, what I read, useful tricks I learn, etc. So far, I have about 60-days worth of these tiny log entries about Mozilla.  Here's what they look like:
 
 <div style="text-align:center" markdown="1">
-![Checkvist Mozilla Log Screenshot](images/checkvist-screenshot.png)
+![Checkvist Mozilla Log Screenshot]({filename}/images/checkvist-screenshot.png)
 </div>
 
 Day-to-day, the log helps me answer questions like "How did I solve this weird configuration problem three weeks ago?" or "What should I ask about at the next team meeting?" Writing also generally helps me think through a task, and the log is a quick and effective outlet for that. The other major benefit is that I can take a step back and see the overall progress of my projects.
