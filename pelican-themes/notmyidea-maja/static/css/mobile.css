@@ -21,6 +21,10 @@ body{
 	padding: 5px;
 }
 
+#banner nav a {
+    font-size: 1.8em;
+}
+
 #banner nav a:link, #banner nav a:visited {
 	padding: 5px 0.5em;
 }
@@ -45,7 +49,7 @@ body{
 }
 
 .entry-title{
-	font-size: 2.5em;
+	font-size: 2em;
 }
 
 pre {
@@ -61,6 +65,11 @@ pre {
   #banner nav {
   	font-size: 1.5em;
   }
+
+  #banner nav a {
+    font-size: 1.5em;
+  }
+
 
   .entry-title{
     font-size: 2em;
