@@ -16,13 +16,13 @@ body{
 }
 
 #banner nav {
-	font-size: 1.8em;
 	margin: 0px auto 1em;
 	padding: 5px;
 }
 
+
 #banner nav a {
-    font-size: 1.8em;
+    font-size: 1.3em;
 }
 
 #banner nav a:link, #banner nav a:visited {
@@ -36,11 +36,11 @@ body{
 .post-info{
 	width: 40%;
 	padding: 0px;
-	font-size:1em;
+	font-size:2em;
 }
 
 #contentinfo {
-	font-size: 75%;
+	font-size: 40%;
 	text-align: left;
 }
 
@@ -51,6 +51,8 @@ body{
 .entry-title{
 	font-size: 2em;
 }
+
+h1 {font-weight: 900;}
 
 pre {
 	font-size:115%;
@@ -67,9 +69,8 @@ pre {
   }
 
   #banner nav a {
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
-
 
   .entry-title{
     font-size: 2em;
