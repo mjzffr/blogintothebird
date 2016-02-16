@@ -1,5 +1,4 @@
 Title: Contact
-Category: pages
 Slug: contact-maja
 Author: Maja Frydrychowicz
 
