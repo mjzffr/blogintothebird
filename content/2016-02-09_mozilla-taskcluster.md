@@ -1,11 +1,12 @@
 Title: First Experiment with TaskCluster
 Date: 2016-02-09
+Modified: 2016-02-16
 Tags: mozilla, foss, ci
 Slug: taskcluster-learning
 Author: Maja Frydrychowicz
-Summary: Adding a new task to a TaskCluster instance.
+Summary: Adding a new task to TaskCluster continuous integration system.
 
-[^1]:[TaskCluster at Mozilla](http://docs.taskcluster.net/introduction/getting-started/#taskcluster-at-mozilla)
+[^1]: This is accomplished in part thanks to [mozilla-taskcluster](https://github.com/taskcluster/mozilla-taskcluster), a service that links Mozilla's hg repo to TaskCluster and creates each decision task. More at [TaskCluster at Mozilla](http://docs.taskcluster.net/introduction/getting-started/#taskcluster-at-mozilla)
 [^2]: Run tasks on any platform thanks to [generic worker](http://docs.taskcluster.net/workers/generic-worker/)
 [^3]: To look at a `graph.json` artifact, go to [Treeherder](http://treeherder.mozilla.org/), click a green 'D' job, then Job details > Inspect Task, where you should find a list of artifacts.
 [^4]: It's not _really_ true that build tasks don't depend on anything. Any task that uses a task-image depends on the task that creates the image. I'm sorry for saying 'task' five times in every sentence, by the way.
@@ -15,7 +16,7 @@ Summary: Adding a new task to a TaskCluster instance.
 
 [TaskCluster](http://docs.taskcluster.net/) is a new-ish continuous integration system made at Mozilla. It manages the scheduling and execution of tasks based on a graph of their dependencies. It's a general CI tool, and could be used for any kind of job, not just Mozilla things. 
 
-The example I describe here refers to a particular instance of TaskCluster: [mozilla-taskcluster](https://github.com/taskcluster/mozilla-taskcluster)[^1]. It runs tasks per check-in on the branches of Mozilla's Mercurial repository and then posts results to [Treeherder](https://github.com/mozilla/treeherder). For now, the tasks can be configured to run in Docker images (Linux), but other platforms are in the works[^2]. 
+However, the example I describe here refers to a Mozilla-centric use case of TaskCluster[^1]: tasks are run per check-in on the branches of Mozilla's Mercurial repository and then results are posted to [Treeherder](https://github.com/mozilla/treeherder). For now, the tasks can be configured to run in Docker images (Linux), but other platforms are in the works[^2]. 
 
 So, I want to schedule a task! I need to add a new task to the task graph that's created for each revision submitted to hg.mozilla.org. (This is part of my work on deploying a suite of [tests for the Marionette Python test runner](https://bugzilla.mozilla.org/show_bug.cgi?id=1227367), i.e. testing the test harness itself.) 
 
@@ -165,6 +166,9 @@ There is lots of great documentation at [docs.taskcluster.net](https://docs.task
 
 * [createTask API](http://docs.taskcluster.net/queue/api-docs/#createTask)
 * [Workers](http://docs.taskcluster.net/workers/)
+
+# Acknowledgements
+Thanks to [dustin](http://code.v.igoro.us/) and others for corrections and feedback.
 
 
 
