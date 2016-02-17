@@ -1,7 +1,7 @@
 Title: First Experiment with TaskCluster
 Date: 2016-02-09
 Modified: 2016-02-16
-Tags: mozilla, foss, ci
+Tags: mozilla, foss, ci, taskcluster
 Slug: taskcluster-learning
 Author: Maja Frydrychowicz
 Summary: Adding a new task to TaskCluster continuous integration system.
@@ -63,7 +63,7 @@ In the excerpt below, you can see a task definition with a `requires` field and 
 
 For now at least, a major assumption in the task-graph creation process seems to be that _test_ tasks can depend on _build_ tasks and _build_ tasks don't really[^4] depend on anything. So:
 
-* If you want your tasks to run for every push to a Mozilla hg branch, add it to the list of __builds__ in `base_jobs.yml`. (Aside: I'm not sure how branches are configured -- like, can you have your task only run on inbound but not on aurora?) 
+* If you want your tasks to run for every push to a Mozilla hg branch, add it to the list of __builds__ in `base_jobs.yml`. 
 * If you want your task to run after certain build tasks succeed, add it to the list of __tests__ in `base_jobs.yml` and specify which build tasks it depends on.
 * Other than the above, I don't see any way to specify a dependency between task A and task B in `testing/taskcluster/tasks`.
 
@@ -168,7 +168,7 @@ There is lots of great documentation at [docs.taskcluster.net](https://docs.task
 * [Workers](http://docs.taskcluster.net/workers/)
 
 # Acknowledgements
-Thanks to [dustin](http://code.v.igoro.us/) and others for corrections and feedback.
+Thanks to [dustin](http://code.v.igoro.us/), pmoore and others for corrections and feedback.
 
 
 
