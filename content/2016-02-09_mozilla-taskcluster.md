@@ -32,7 +32,7 @@ The task I'm creating doesn't quite fit into either category: it runs harness te
 
 # Scheduling a task
 
-Just adding a yaml file that describes your new task under `testing/taskcluster/tasks` isn't enough to get it scheduled: you must also add it to the list of tasks in `base_jobs.yml`, and define an identifier for your task in `base_job_flags.yml`. This identifier is used in `base_jobs.yml`, and also by people who want to run your task when pushing to [try](https://wiki.mozilla.org/ReleaseEngineering/TryServer).
+Just adding a yaml file that describes your new task under `testing/taskcluster/tasks` isn't enough to get it scheduled: you must also add it to the list of tasks in [`base_jobs.yml`](https://dxr.mozilla.org/mozilla-central/source/testing/taskcluster/tasks/branches/base_jobs.yml), and define an identifier for your task in [`base_job_flags.yml`](https://dxr.mozilla.org/mozilla-central/source/testing/taskcluster/tasks/branches/base_job_flags.yml). This identifier is used in `base_jobs.yml`, and also by people who want to run your task when pushing to [try](https://wiki.mozilla.org/ReleaseEngineering/TryServer).
 
 How does scheduling work? First a [decision task](http://docs.taskcluster.net/introduction/getting-started/#decision-tasks-and-task-graphs) generates a _task graph_, which describes all the tasks and their relationships. More precisely, it looks at `base_jobs.yml` and other yaml files in `testing/taskcluster/tasks` and spits out a json artifact, `graph.json`[^3]. Then, `graph.json` gets sent to TC's [`createTask`](http://docs.taskcluster.net/queue/api-docs/#createTask) endpoint, which takes care of the actual scheduling.  
 
