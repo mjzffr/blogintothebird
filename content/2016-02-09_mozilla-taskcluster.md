@@ -61,7 +61,7 @@ In the excerpt below, you can see a task definition with a `requires` field and 
       ]
     }
 
-For now at least, a major assumption in the task-graph creation process seems to be that _test_ tasks can depend on _build_ tasks and _build_ tasks don't really[^4] depend on anything. So:
+For now at least, a major assumption in the task-graph creation process seems to be that _test_ tasks can depend on _build_ tasks and _build_ tasks don't really[^4] depend on anything. So: <a name="scheduling_summary"></a>
 
 * If you want your tasks to run for every push to a Mozilla hg branch, add it to the list of __builds__ in `base_jobs.yml`. 
 * If you want your task to run after certain build tasks succeed, add it to the list of __tests__ in `base_jobs.yml` and specify which build tasks it depends on.
