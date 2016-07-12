@@ -1,6 +1,7 @@
 Title: Untangling WebDriver and the Browser Automation Landscape I Live In
 Date: 2016-07-12
 Modified: 2016-07-12
+Tags: mozilla, foss, web, automation
 Slug: webdriver-ontology
 Author: Maja Frydrychowicz
 Summary: I define WebDriver, W3C WebDriver, Selenium, geckodriver, FirefoxDriver, Marionette harness/runner/client/driver and more.
