@@ -65,7 +65,7 @@ Now that I understand the context, my view of Marionette's components is much cl
 As you can see, "Marionette" may refer to many different things. I think this ambiguity will always make me a little nervous... Words are hard, especially as a loose collection of projects evolves and becomes unified. In a few years, the terms will firm up. For now, let's be extra careful and specify which piece we're talking about. 
 
 ## Acknowledgements
-Thanks to [David Burns](https://twitter.com/AutomatedTester) for patiently answering my half-baked questions last week, and to James Graham and [Andreas Tolfsen](https://twitter.com/tolfsen) for providing detailed and delightful feedback on a draft of this article. Bonus high-five to [Anjana Vakil](http://vakila.github.io/) for contributions to Marionette Test Runner this year and for inspiring me to write this post in the first place. 
+Thanks to [David Burns](https://twitter.com/AutomatedTester) for patiently answering my half-baked questions last week, and to James Graham and [Andreas Tolfsen](https://sny.no) for providing detailed and delightful feedback on a draft of this article. Bonus high-five to [Anjana Vakil](http://vakila.github.io/) for contributions to Marionette Test Runner this year and for inspiring me to write this post in the first place. 
 
 [^1]: Terminology lesson: the WebDriver protocol is a [wire protocol](https://en.wikipedia.org/wiki/Wire_protocol) because it's at the application level and requires several applications working together.
 [^2]: I give a range of years because Selenium WebDriver is a merger of two projects that started at different times.
