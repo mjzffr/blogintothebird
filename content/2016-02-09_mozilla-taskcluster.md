@@ -6,15 +6,15 @@ Slug: taskcluster-learning
 Author: Maja Frydrychowicz
 Summary: Adding a new task to TaskCluster continuous integration system.
 
-[^1]: This is accomplished in part thanks to [mozilla-taskcluster](http://blog.gregarndt.com/taskcluster/2015/08/05/demystifying-in-tree-scheduling/), a service that links Mozilla's hg repo to TaskCluster and creates each decision task. More at [TaskCluster at Mozilla](http://docs.taskcluster.net/introduction/getting-started/#taskcluster-at-mozilla)
-[^2]: Run tasks on any platform thanks to [generic worker](http://docs.taskcluster.net/workers/generic-worker/)
-[^3]: To look at a `graph.json` artifact, go to [Treeherder](http://treeherder.mozilla.org/), click a green 'D' job, then Job details > Inspect Task, where you should find a list of artifacts.
+[^1]: This is accomplished in part thanks to [mozilla-taskcluster](http://blog.gregarndt.com/taskcluster/2015/08/05/demystifying-in-tree-scheduling/), a service that links Mozilla's hg repo to TaskCluster and creates each decision task. More at [TaskCluster at Mozilla](https://docs.taskcluster.net/introduction/getting-started/#taskcluster-at-mozilla)
+[^2]: Run tasks on any platform thanks to [generic worker](https://docs.taskcluster.net/workers/generic-worker/)
+[^3]: To look at a `graph.json` artifact, go to [Treeherder](https://treeherder.mozilla.org/), click a green 'D' job, then Job details > Inspect Task, where you should find a list of artifacts.
 [^4]: It's not _really_ true that build tasks don't depend on anything. Any task that uses a task-image depends on the task that creates the image. I'm sorry for saying 'task' five times in every sentence, by the way.
-[^5]: ...as opposed to a [generic worker](http://docs.taskcluster.net/workers/generic-worker/).
+[^5]: ...as opposed to a [generic worker](https://docs.taskcluster.net/workers/generic-worker/).
 [^6]: `{{#task_id_for_image}}` is an example of a predefined variable that we can use in our TC yaml files. Where do they come from? How do they get populated? I don't know.
 
 
-[TaskCluster](http://docs.taskcluster.net/) is a new-ish continuous integration system made at Mozilla. It manages the scheduling and execution of tasks based on a graph of their dependencies. It's a general CI tool, and could be used for any kind of job, not just Mozilla things. 
+[TaskCluster](https://docs.taskcluster.net/) is a new-ish continuous integration system made at Mozilla. It manages the scheduling and execution of tasks based on a graph of their dependencies. It's a general CI tool, and could be used for any kind of job, not just Mozilla things. 
 
 However, the example I describe here refers to a Mozilla-centric use case of TaskCluster[^1]: tasks are run per check-in on the branches of Mozilla's Mercurial repository and then results are posted to [Treeherder](https://github.com/mozilla/treeherder). For now, the tasks can be configured to run in Docker images (Linux), but other platforms are in the works[^2]. 
 
@@ -28,13 +28,13 @@ mozilla-taskcluster operates based on the info under [`testing/taskcluster/tasks
 
 The yaml files are organized into two main categories of tasks: builds and tests. This is just a convention in mozilla-taskcluster about how to group task configurations; TC itself doesn't actually know or care whether a task is a build or a test.
 
-The task I'm creating doesn't quite fit into either category: it runs harness tests that just exercise the Python runner code in [marionette_client](http://marionette-client.readthedocs.org), so I only need a source checkout, not a Firefox build. I'd like these tests to run quickly without having to wait around for a build. Another example of such a task is the recently-created [ESLint task](https://hg.mozilla.org/mozilla-central/rev/4b34c9d1a31a).
+The task I'm creating doesn't quite fit into either category: it runs harness tests that just exercise the Python runner code in [marionette_client](https://marionette-client.readthedocs.org), so I only need a source checkout, not a Firefox build. I'd like these tests to run quickly without having to wait around for a build. Another example of such a task is the recently-created [ESLint task](https://hg.mozilla.org/mozilla-central/rev/4b34c9d1a31a).
 
 # Scheduling a task
 
 Just adding a yaml file that describes your new task under `testing/taskcluster/tasks` isn't enough to get it scheduled: you must also add it to the list of tasks in [`base_jobs.yml`](https://dxr.mozilla.org/mozilla-central/source/testing/taskcluster/tasks/branches/base_jobs.yml), and define an identifier for your task in [`base_job_flags.yml`](https://dxr.mozilla.org/mozilla-central/source/testing/taskcluster/tasks/branches/base_job_flags.yml). This identifier is used in `base_jobs.yml`, and also by people who want to run your task when pushing to [try](https://wiki.mozilla.org/ReleaseEngineering/TryServer).
 
-How does scheduling work? First a [decision task](http://docs.taskcluster.net/introduction/getting-started/#decision-tasks-and-task-graphs) generates a _task graph_, which describes all the tasks and their relationships. More precisely, it looks at `base_jobs.yml` and other yaml files in `testing/taskcluster/tasks` and spits out a json artifact, `graph.json`[^3]. Then, `graph.json` gets sent to TC's [`createTask`](http://docs.taskcluster.net/queue/api-docs/#createTask) endpoint, which takes care of the actual scheduling.  
+How does scheduling work? First a [decision task](https://docs.taskcluster.net/introduction/getting-started/#decision-tasks-and-task-graphs) generates a _task graph_, which describes all the tasks and their relationships. More precisely, it looks at `base_jobs.yml` and other yaml files in `testing/taskcluster/tasks` and spits out a json artifact, `graph.json`[^3]. Then, `graph.json` gets sent to TC's [`createTask`](https://docs.taskcluster.net/queue/api-docs/#createTask) endpoint, which takes care of the actual scheduling.  
 
 In the excerpt below, you can see a task definition with a `requires` field and you can recognize a lot of fields that are in common with the 'task' section of the yaml files under `testing/taskcluster/tasks/`.
 
@@ -91,7 +91,7 @@ This will allow me to trigger my task with the following try syntax: `try: -b o 
 Now I have to add some stuff to `tasks/tests/harness_marionette.yml`. Many of my choices here are based on the work done for the [ESLint task](https://hg.mozilla.org/mozilla-central/rev/4b34c9d1a31a). I created a base task called `harness_test.yml` by mostly copying bits and pieces from the basic build task, `build.yml` and making a few small changes. The actual task, `harness_marionette.yml` inherits from `harness_test.yml` and defines specifics like Treeherder symbols and the command to run.
 
 ## The command
-The heart of the task is in `task.payload.command`. You could chain a bunch of shell commands together directly in this field of the yaml file, but it's better not to. Instead, it's common to call a TaskCluster-friendly shell script that's available in your task's environment. For example, the [`desktop-test`](https://dxr.mozilla.org/mozilla-central/source/testing/docker/desktop-test) docker image has a script called `test.sh` through which you can call the [mozharness](https://wiki.mozilla.org/ReleaseEngineering/Mozharness) script for your tests. There's a similar `build.sh` script on `desktop-build`. Both of these scripts depend on environment variables set elsewhere in your task definition, or in the Docker image used by your task. The environment might also provide utilities like [tc-vcs](http://tc-vcs.readthedocs.org/en/latest/), which is used for checking out source code.
+The heart of the task is in `task.payload.command`. You could chain a bunch of shell commands together directly in this field of the yaml file, but it's better not to. Instead, it's common to call a TaskCluster-friendly shell script that's available in your task's environment. For example, the [`desktop-test`](https://dxr.mozilla.org/mozilla-central/source/testing/docker/desktop-test) docker image has a script called `test.sh` through which you can call the [mozharness](https://wiki.mozilla.org/ReleaseEngineering/Mozharness) script for your tests. There's a similar `build.sh` script on `desktop-build`. Both of these scripts depend on environment variables set elsewhere in your task definition, or in the Docker image used by your task. The environment might also provide utilities like [tc-vcs](https://tc-vcs.readthedocs.org/en/latest/), which is used for checking out source code.
 
     :::yaml
     # in harness_marionette.yml
@@ -112,7 +112,7 @@ Where should the task run? What resources should it have access to? This was pro
 
 ## docker-worker
 
-My task will run in a docker image using a [docker-worker](http://docs.taskcluster.net/workers/docker-worker/)[^5]. The image, called `desktop-build`, is defined in-tree under [`testing/docker`](https://dxr.mozilla.org/mozilla-central/source/testing/docker/desktop-build). There are many other images defined there, but I only considered `desktop-build` versus `desktop-test`. I opted for `desktop-build` because `desktop-test` seems to contain mozharness-related stuff that I don't need for now.
+My task will run in a docker image using a [docker-worker](https://docs.taskcluster.net/workers/docker-worker/)[^5]. The image, called `desktop-build`, is defined in-tree under [`testing/docker`](https://dxr.mozilla.org/mozilla-central/source/testing/docker/desktop-build). There are many other images defined there, but I only considered `desktop-build` versus `desktop-test`. I opted for `desktop-build` because `desktop-test` seems to contain mozharness-related stuff that I don't need for now.
   
     :::yaml
     # harness_test.yml
@@ -131,7 +131,7 @@ The image is stored as an artifact of another TC task, which makes it a 'task-im
       "type": "task-image"
     }
 
-Snooping around in the handy [Task Inspector](https://tools.taskcluster.net/task-inspector/), I found that the magical mystery task is defined in [image.yml](https://dxr.mozilla.org/mozilla-central/source/testing/taskcluster/tasks/image.yml) and runs [`build_image.sh`](https://dxr.mozilla.org/mozilla-central/source/testing/docker/image_builder/bin/build_image.sh). Fun. It's also quite convenient to [define and test your own custom image](http://docs.taskcluster.net/presentations/TC-102/#/images-00).
+Snooping around in the handy [Task Inspector](https://tools.taskcluster.net/task-inspector/), I found that the magical mystery task is defined in [image.yml](https://dxr.mozilla.org/mozilla-central/source/testing/taskcluster/tasks/image.yml) and runs [`build_image.sh`](https://dxr.mozilla.org/mozilla-central/source/testing/docker/image_builder/bin/build_image.sh). Fun. It's also quite convenient to [define and test your own custom image](https://docs.taskcluster.net/presentations/TC-102/#/images-00).
 
 ## Other details that I mostly ignored
 
@@ -153,7 +153,7 @@ Snooping around in the handy [Task Inspector](https://tools.taskcluster.net/task
 
 # Yay for trial and error
 * If you have syntax errors in your yaml, the Decision task will fail. If this happens during a try push, look under Job Details > Inspect Task to fine useful error messages.
-* Iterating on your task is pretty easy. Aside from pushing to try, you can [run tasks locally using vagrant](http://docs.taskcluster.net/presentations/TC-101/#/run-locally-environment) and you can build a task graph locally as well with `mach taskcluster-graph`. 
+* Iterating on your task is pretty easy. Aside from pushing to try, you can [run tasks locally using vagrant](https://docs.taskcluster.net/presentations/TC-101/#/run-locally-environment) and you can build a task graph locally as well with `mach taskcluster-graph`. 
 
 # Resources 
 Blog posts from other TaskCluster users at Mozilla:
@@ -164,8 +164,8 @@ Blog posts from other TaskCluster users at Mozilla:
 
 There is lots of great documentation at [docs.taskcluster.net](https://docs.taskcluster.net), but these sections were especially useful to me:
 
-* [createTask API](http://docs.taskcluster.net/queue/api-docs/#createTask)
-* [Workers](http://docs.taskcluster.net/workers/)
+* [createTask API](https://docs.taskcluster.net/queue/api-docs/#createTask)
+* [Workers](https://docs.taskcluster.net/workers/)
 
 # Acknowledgements
 Thanks to [dustin](http://code.v.igoro.us/), pmoore and others for corrections and feedback.
