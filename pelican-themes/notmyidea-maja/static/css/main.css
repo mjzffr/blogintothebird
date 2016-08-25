@@ -232,8 +232,6 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 		font-weight: 700;
 		width: 800px;
 
-		border-radius: 5px;
-		-webkit-border-radius: 5px;
 	}
 
 	#banner nav ul {list-style: none; margin: 0 auto; width: 800px;}
@@ -262,13 +260,6 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 		text-shadow: none !important;
 	}
 
-	#banner nav li:first-child a {
-		border-top-left-radius: 5px;
-		-webkit-border-top-left-radius: 5px;
-
-		border-bottom-left-radius: 5px;
-		-webkit-border-bottom-left-radius: 5px;
-	}
 
 /*
 	Featured
@@ -280,8 +271,6 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 	padding: 20px;
 	width: 760px;
 
-	border-radius: 10px;
-	-webkit-border-radius: 10px;
 }
 
 #featured figure {
@@ -308,8 +297,6 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 	padding: 20px 20px;
 	width: 760px;
 
-	border-radius: 10px;
-	-webkit-border-radius: 10px;
 }
 
 /*
@@ -327,8 +314,6 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 	padding: 20px 20px;
 	width: 760px;
 
-	border-radius: 10px;
-	-webkit-border-radius: 10px;
 }
 
 .footnote { font-size: 0.8em; }
@@ -417,8 +402,6 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 	text-align: left;
 	width: 760px;
 
-	border-radius: 10px;
-	-webkit-border-radius: 10px;
 }
 
 #license #logo {
