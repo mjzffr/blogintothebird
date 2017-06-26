@@ -41,7 +41,14 @@ TYPOGRIFY = True
 
 THEME = "pelican-themes/notmyidea-maja"
 
-MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra']
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+    },
+    'output_format': 'html5',
+}
+
 
 FAVICON = 'theme/images/icons/favicon.png'
 
