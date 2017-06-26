@@ -573,14 +573,16 @@ Based on existing remote debugging protocol instead.
 <span class="op">}</span></code></pre></div>
 <p>Example response: type, id, error, result</p>
 <pre><code>[1,21,null,{&quot;value&quot;:&quot;Cats in Boxes&quot;}]</code></pre>
+<div class="notes">
 <blockquote>
 <p>Notes: excerpt from <a href="https://dxr.mozilla.org/mozilla-central/source/testing/marionette/listener.js">listener.js</a></p>
-</blockquote>
 <ul>
 <li>1 is the message type: now it's a response (versus 0, which is a request)</li>
 <li>21 is the id that matches the original request</li>
 <li>null means there's no error</li>
 </ul>
+</blockquote>
+</div>
 <h2 id="processing-a-command-6">Processing a Command (6)</h2>
 <div style="height:50px">
 
