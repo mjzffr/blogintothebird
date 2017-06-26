@@ -174,7 +174,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <p>Notes:</p>
 <ul>
 <li>From the perspective of a web developer, cross-browser/platform support is not easy to achieve.</li>
-<li>The developer is less productive and is faced with a trade-off: spend my time getting this working for more users, or write some more features for just one browser/platform?</li>
+<li>The developer is faced with a trade-off: spend my time getting this working for more users, or write some more features for just one browser/platform?</li>
 <li>The user suffers because they can't access content or share with everyone.</li>
 </ul>
 </blockquote>
@@ -186,7 +186,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li>Another way to think about the health of the web is in terms of <em>predictability</em>: Surprises are bad for developers.</li>
 <li>A web developer's task is made harder because their code breaks in surprising ways, including regressions that pop up months after successful deployment.</li>
-<li>What can we do to make web development less suprising?</li>
+<li>What can we do to make web development less surprising and frustrating?</li>
 </ul>
 </blockquote>
 </div>
@@ -211,10 +211,9 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <p>Notes:</p>
 <ul>
 <li>The ideal is that anyone can come along, build something on top of this shared open platform and thereby reach all web users.</li>
-<li>On the other side of the spectrum, we can have lots of small pockets that don't interact. Imagine an extreme where building cross-browser web apps is pretty much impossible so that Android Opera users live in this slice of the web, whereas Windows Chrome only hang out in another part, etc.</li>
-<li>One example of fragmentation is the two distinct ecosystems for users of iOS and Android: App Store versus Google Play. A lot of those apps could just be web apps today, but when these platforms were first entering the market, mobile browsers weren't mature enough or consistent enough, so users were offered platform-specific apps instead.</li>
-<li>Another example of the side-effects of fragmentation: if you choose to<br />
-use a more affordable device, that may imply that you have access to very different web content.</li>
+<li>On the other side of the spectrum, we can have lots of small pockets that don't interact. Imagine an extreme where building compatible web apps is pretty much impossible so that Android Opera users live in one slice of the web, whereas Windows Chrome only hang out in another part, etc.</li>
+<li>One example of fragmentation is the distinct ecosystems for users of iOS and Android: App Store versus Google Play. A lot of those apps could just be web apps today, but when these platforms were first entering the market, mobile browsers weren't mature enough or consistent enough, so users were offered platform-specific apps instead. Today, developing a cross-browser, responsive web app is still hard, so lots of projects focus their efforts on native mobile apps instead. :(</li>
+<li>Another example of the side-effects of fragmentation: if you choose to use a more affordable device that may imply that you have access to very different web content.</li>
 </ul>
 </blockquote>
 </div>
@@ -226,7 +225,7 @@ use a more affordable device, that may imply that you have access to very differ
 <blockquote>
 <p>Notes:</p>
 <ul>
-<li>These are the ideals that motivate our work on WebDriver</li>
+<li>These are the ideals that motivate our work on WebDriver.</li>
 <li>That is, we work on browser automation because it is the basis for tools that make developing for the web easier, whether you're working on a web app or a whole browser.</li>
 </ul>
 </blockquote>
@@ -242,7 +241,7 @@ use a more affordable device, that may imply that you have access to very differ
 <blockquote>
 <p>Notes:</p>
 <ul>
-<li>What are these tools? As promised, we'll focus on WebDriver, which is the basis for how browser automation will work in all browsers.</li>
+<li>What are these tools? As promised, we'll focus on WebDriver, which defines how browser automation will work in all browsers.</li>
 <li>I'll also explain the relationship with <a href="http://www.seleniumhq.org/">Selenium</a>, a popular open source project for automating browsers.</li>
 </ul>
 </blockquote>
@@ -279,10 +278,9 @@ link.click()</code></pre></div>
 <blockquote>
 <p>Notes:</p>
 <ul>
-<li>Note that remote control does not affect day-to-day use of any browser.</li>
+<li>Remote control does not affect day-to-day use of any browser.</li>
 <li>There are measures in place to restrict this capability: no one wants a third party to take control over their browser.</li>
-<li>As an extra precaution and reminder, when remote control is enabled you<br />
-will see a modified URL bar in Firefox.</li>
+<li>As an extra precaution and reminder, when remote control is enabled users see a modified URL bar in Firefox.</li>
 <li>I think Chrome and Safari have a similar visual cue.</li>
 </ul>
 </blockquote>
@@ -305,9 +303,8 @@ will see a modified URL bar in Firefox.</li>
 <p>WebDriver could be used:</p>
 <ul>
 <li>To make web development easier (enhance developer tools)</li>
-<li>For browser instrumentation (screenshots on failure, performance)</li>
-<li>To make it easier to report, describe and investigate web compatibility bugs</li>
-<li>Write or generate a specific, reproducible test case.</li>
+<li>For browser instrumentation (screenshots on failure, enhanced logging, monitor performance)</li>
+<li>To make it easier to report, describe and investigate web compatibility bugs: write or generate a specific, reproducible test case.</li>
 <li>To make it easier to distinguish between browser bugs and web app bugs</li>
 </ul>
 </blockquote>
@@ -322,7 +319,7 @@ will see a modified URL bar in Firefox.</li>
 <ul>
 <li>WebDriver provides a communication protocol between a <em>client</em> and a<br />
 <em>browser</em>. Each kind of browser is controlled by a &quot;driver&quot; built for it.</li>
-<li>There are lots of WebDriver client libraries out there, in many different languages, but I'll provide examples using the Selenium python Client.</li>
+<li>There are lots of WebDriver client libraries out there, in many different languages, but I'll provide examples using the Selenium Python client.</li>
 </ul>
 </blockquote>
 </div>
@@ -355,8 +352,8 @@ session.close()</code></pre></div>
 <p>Notes</p>
 <ul>
 <li>Use a new version of Selenium WebDriver (&gt; 3.3.1)</li>
-<li>geckodriver program that allows Selenium to talk to Firefox. You'll learn more about it later.</li>
-<li><code>webdriver.Firefox()</code> is starting a <em>WebDriver session</em>: this takes care of starting the browser in &quot;remote control&quot; mode, as well as, setting relevant browser prefs that are more suitable for automation such as: do not warn when closing all tabs, don't show UI tour, don't run browser updates.</li>
+<li>geckodriver is a program that allows Selenium to talk to Firefox. You'll learn more about it later.</li>
+<li><code>webdriver.Firefox()</code> is starting a <em>WebDriver session</em>. This takes care of starting the browser in &quot;remote control&quot; mode, as well as, setting relevant browser prefs that are more suitable for automation such as: do not warn when closing all tabs, don't show UI tour, don't run browser updates.</li>
 </ul>
 </blockquote>
 </div>
@@ -369,15 +366,15 @@ Selenium WebDriver ➔ W3C WebDriver Standard
 <p>Notes:</p>
 <ul>
 <li>This browser-automation idea started a long time ago with open source software that today is called Selenium WebDriver. Originally, the Selenium community maintained both the clients and the individual drivers for each browser.</li>
-<li>Each browser driver has to be implemented differently in a way that best suited that particular browser. For example, FirefoxDriver was a Firefox add-on.</li>
-<li>The project was very popular, especially of web testing. Gradually, browser vendors started implementing their own &quot;drivers&quot; to receive commands from Selenium. This makes a lot of sense: it's good for the web (see all our motivation about interoperability, etc.) and it's certainly easier for browser vendors to maintain their own drivers, since they are familiar with browser internal, etc. (It's kind of amazing that the Selenium community maintained a whole bunch of browser drivers on their own for so long.)</li>
-<li>Then the W3C agreed that it should become a web standard so that all browsers implement WebDriver consistently. For something to become a standard, you need at least two independent implementations (✅) and a specification. The specification is pretty-much written now (✅).</li>
+<li>Each browser driver has to be implemented differently in a way that is best suited to that particular browser. For example, Selenium's FirefoxDriver was a Firefox add-on.</li>
+<li>Selenium grew very popular, especially for web testing. Gradually, browser vendors started implementing their own &quot;drivers&quot; to receive commands from Selenium. This makes a lot of sense: it's good for the web (see previous motivation about interoperability, etc.) and it's certainly easier for browser vendors to maintain their own drivers, since they are familiar with browser internals, etc. (It's kind of amazing that the Selenium community maintained a whole bunch of browser drivers on their own for so long.)</li>
+<li>The W3C agreed that this should become a web standard so that all browsers implement WebDriver consistently. For something to become a standard, you need at least two independent implementations (✅) and a specification. The specification is pretty-much written now (✅).</li>
 </ul>
 <p>What does this imply?</p>
 <ul>
-<li>Write one automation script in your favourite language</li>
-<li>Run your script against any/all browsers</li>
-<li>Now we're in a transition period: from Selenium WebDriver with old drivers to new spec-compliant divers.</li>
+<li>You write one automation script in your favourite language.</li>
+<li>Run your script against any/all browsers.</li>
+<li>Now we're in a transition period: from Selenium WebDriver with old drivers to new spec-compliant drivers.</li>
 </ul>
 </blockquote>
 </div>
@@ -395,7 +392,7 @@ Selenium WebDriver ➔ W3C WebDriver Standard
 <p>Notes:</p>
 <ul>
 <li>This list doesn't show any payloads, see next slide.</li>
-<li>The <code>&lt;id&gt;</code> refers to the WebDriver session that is connecting your client a particular browser instance. Before you send any commands, you have to establish a session. When you're done, you end the session.</li>
+<li>The <code>&lt;id&gt;</code> refers to the WebDriver session that is connecting your client to a particular browser instance. Before you send any commands, you have to start a session. When you're done, you end the session.</li>
 <li>We'll see examples in a moment.</li>
 <li>List of <a href="https://www.w3.org/TR/webdriver/#h-list-of-endpoints">all commands</a></li>
 </ul>
@@ -412,10 +409,10 @@ Data: {}</code></pre>
 <blockquote>
 <p>Notes:</p>
 <ul>
-<li>Sending a POST request to the <code>url</code> endpoint means: &quot;please navigate somehwere&quot;</li>
-<li>The command is for session <code>0152f...a9e8</code> with one parameter: <code>url = https://www.mozilla.org/</code></li>
+<li>Sending a POST request to the <code>url</code> endpoint means: &quot;please navigate somewhere&quot;</li>
+<li>The command is aimed at session <code>0152f...a9e8</code> with one parameter: <code>url = https://www.mozilla.org/</code></li>
 <li>The JSON payload is <code>{&quot;url&quot;: &quot;https://www.mozilla.org/&quot;}</code></li>
-<li>If the command is successful (the navigation completes), the driver will respond with a status of 200 and no data. <em>Note that the 200 shown here is from the driver; the HTTP server response from mozilla.org is a different concept.</em></li>
+<li>If the command is successful (the navigation completes), the driver will respond with a status of 200 and no data. <em>Note that the 200 status here is from the driver; the HTTP server response from mozilla.org is a different concept.</em></li>
 </ul>
 </blockquote>
 </div>
@@ -429,7 +426,7 @@ How many WebDriver commands work in each browser?
 <ul>
 <li>All majors browser vendors are working on implementing the WebDriver specification.</li>
 <li>Firefox is the most spec-compliant now; there's a dedicated team working on it.</li>
-<li>There are also Web Platform Tests (see next slide) for WebDriver, which helps browsers implement the spec consistently/correctly.</li>
+<li>There are also Web Platform Tests (see next slide) for WebDriver, which helps browser vendors implement the spec consistently/correctly.</li>
 </ul>
 </blockquote>
 </div>
@@ -442,7 +439,7 @@ How many WebDriver commands work in each browser?
 <blockquote>
 <p>Notes:</p>
 <ul>
-<li>The W3C Web Platform Tests is a suite of tests that accompany all web standards (not just WebDriver). They are shared by all browser vendors to coordinate the effort toward web predictability.</li>
+<li>W3C Web Platform Tests is a suite of tests that accompany all web standards (not just WebDriver). They are shared by all browser vendors to coordinate the effort toward web predictability.</li>
 <li>As different browser vendors implement standards, they can contribute<br />
 tests for everyone else to use.</li>
 <li>The tests are run against all browsers: measure how spec-compliant they are, detect when something breaks.</li>
@@ -466,7 +463,7 @@ tests for everyone else to use.</li>
 <p>Notes:</p>
 <ul>
 <li>A WebDriver client sends JSON over HTTP to geckodriver, geckodriver translates that into a custom socket-based protocol understood by Firefox. geckodriver is written in Rust.</li>
-<li><em>Marionette</em> is the component within Firefox that responds to WebDriver commands. It is kind of like a Firefox addon with access to privileged, internal APIs. Marionette is written in JavaScript.</li>
+<li><em>Marionette</em> is the component within Firefox that responds to WebDriver commands. It is kind of like a Firefox add-on with access to privileged, internal APIs. Marionette is written in JavaScript.</li>
 </ul>
 </blockquote>
 </div>
@@ -504,11 +501,10 @@ Based on existing remote debugging protocol instead.
 <blockquote>
 <p>Notes:</p>
 <ul>
-<li>30 refers to the length of <code>[0, 21, &quot;getTitle&quot;, null]</code></li>
+<li>30 refers to the length of the string <code>[0, 21, &quot;getTitle&quot;, null]</code></li>
 <li>0 is the message type (request)</li>
-<li>21 is the message id</li>
-<li>Marionette has to respond in sequence. Responses are synchronous, sent in order, but requests are async and need to be distinguished by id.</li>
-<li>&quot;getTitle&quot; is the name of the command in Marionette</li>
+<li>21 is the message id: Marionette has to respond in sequence. Responses are synchronous, sent in order, but requests are async and need to be distinguished by id.</li>
+<li>&quot;getTitle&quot; is the name of the command in Marionette.</li>
 <li>null means there are no parameters.</li>
 </ul>
 </blockquote>
@@ -594,7 +590,7 @@ Data: {&quot;value&quot;:&quot;Cats in Boxes&quot;}</code></pre>
 <div class="notes">
 <blockquote>
 <p>Notes:</p>
-<p>Most WebDriver commands are functional in Firefox -- many were implemented years ago -- but not all of them are spec-compliant yet. This is also true of other browsers: the commands work, but not consistently. By &quot;implementing a command&quot;, I mean modifying or rewriting parts of Marionette to make it follow the WebDriver spec. It's an interesting tasks because you end up interacting with spec authors, digging into other web standards (like UI events), comparing with other browsers and trying to reconcile what the browser should actually do in response to a command.</p>
+<p>Most WebDriver commands are functional in Firefox -- many were implemented years ago -- but not all of them are spec-compliant yet. This is also true of other browsers: the commands work, but not consistently. By &quot;implementing a command&quot;, I mean modifying or rewriting parts of Marionette to make it follow the WebDriver spec. It's an interesting task because you end up interacting with spec authors, digging into other web standards (like UI events), comparing with other browsers and trying to reconcile what the browser should actually do in response to a command.</p>
 </blockquote>
 </div>
 <h2 id="example-the-actions-command">Example: The &quot;Actions&quot; Command</h2>
@@ -617,7 +613,7 @@ Data: {&quot;value&quot;:&quot;Cats in Boxes&quot;}</code></pre>
 <li>I'll describe what I had to do to implement the Actions command.</li>
 <li>The above request describes a sequence of steps to perform with a mouse: move the pointer to coordinates (80, 10) on the page in 50 ms, press the primary button, release the primary button.</li>
 <li>In general, actions commands are meant to describe a timeline of input device behaviour.</li>
-<li>The above shows a 1-layer timeline: just a mouse. You could instead describe many devices (many layers) doing different things simultaneously, like a mouse and keyboard, or two finders on a touch screen.</li>
+<li>The above shows a 1-layer timeline: just a mouse. You could instead describe many devices (many layers) doing different things simultaneously, like a mouse and keyboard, or two fingers on a touch screen.</li>
 </ul>
 </blockquote>
 </div>
@@ -643,6 +639,7 @@ Data: {&quot;value&quot;:&quot;Cats in Boxes&quot;}</code></pre>
 <blockquote>
 <p>Notes:</p>
 <ul>
+<li>The WebDriver spec is pretty much done but there's still room for slight changes and fixes.</li>
 <li>The spec describes algorithms at a high-level</li>
 <li>Additional decisions left up to the implementor: data representation,<br />
 optimizations, use of programming language features.</li>
@@ -661,9 +658,9 @@ optimizations, use of programming language features.</li>
 <blockquote>
 <p>Notes:</p>
 <ul>
-<li>Typically, each <a href="https://github.com/w3c/web-platform-tests/tree/master/webdriver/actions">test</a> loads a document, performs a request, compares the result to what we'd expect to see if an actual human were interacting with the document.</li>
-<li>As a result, writing webdriver spec tests involves a mix of python (the actual test), as well as some JavaScript to introspect what's happening in the web document.</li>
-<li>You also need to hook up the webdriver test client <a href="https://github.com/w3c/web-platform-tests/blob/master/tools/webdriver/webdriver/client.py#L75">to your new command</a>.</li>
+<li>Typically, each <a href="https://github.com/w3c/web-platform-tests/tree/master/webdriver/actions">test</a> loads a document, sends a WebDriver request, compares the result to what we'd expect to see if an actual human were interacting with the document.</li>
+<li>As a result, writing WebDriver spec tests involves a mix of Python (the actual test), as well as some JavaScript to introspect what's happening in the web document.</li>
+<li>You also need to hook up the WebDriver test client <a href="https://github.com/w3c/web-platform-tests/blob/master/tools/webdriver/webdriver/client.py#L75">to your new command</a>.</li>
 </ul>
 </blockquote>
 </div>
@@ -700,9 +697,10 @@ First, parse and validate the command payload
 <li>The idea is to divide this timeline into discrete ticks (points in time) and trigger all the events for one tick simultaneously and asynchronously. When all the events for the first tick are done (keyboard, mouse, etc), then trigger all the events for the second tick, and so on.</li>
 <li>From the client's perspective, the action command doesn't return a response until all the events in the sequence are complete.</li>
 <li>This is implemented in Marionette with Promises.</li>
+<li>There's more: code for constructing and triggering events, calculating how to update pointer coordinates, track input device state, etc.</li>
 </ul>
-</blockquote>
 </div>
+</blockquote>
 <h1 id="what-next">What next?</h1>
 <div class="notes">
 <blockquote>
@@ -734,7 +732,7 @@ First, parse and validate the command payload
 <blockquote>
 <p>Notes:</p>
 <ul>
-<li>Example of adding webdriver spec tests: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1357590">Bug 1357590</a></li>
+<li>Example of adding WebDriver spec tests: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1357590">Bug 1357590</a></li>
 <li>A good entry point for working on spec implementation bugs is in<br />
 <a href="https://github.com/mozilla/geckodriver/issues">geckodriver issues</a>, some of which need to be fixed in Marionette. Or if you report a new issue, you might enjoy figuring out how to fix it.</li>
 <li>For Mozilla test-harness bugs, take a look at <a href="https://www.joshmatthews.net/bugsahoy/?automation=1&amp;py=1">Bugs Ahoy</a></li>
@@ -746,9 +744,9 @@ First, parse and validate the command payload
 <blockquote>
 <p>Notes:</p>
 <ul>
-<li>Achieving and maintaining web predictability is a huge amount of work</li>
+<li>Achieving and maintaining web predictability is a huge amount of work. It's a moving target.</li>
 <li>How do you maximize progress? Eliminate friction! Make collaboration a breeze! Multiply everyone's efforts with automation!</li>
-<li>WebDriver enables a whole class of tools to ease all the work around web compatibility, yay.</li>
+<li>WebDriver enables a whole class of tools to ease all the work around web compatibility/predictability, yay.</li>
 </ul>
 </blockquote>
 </div>
