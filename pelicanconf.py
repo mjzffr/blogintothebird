@@ -26,6 +26,8 @@ LINKS = False
 #MENUITEMS = (('Intro', 'http://www.erranderr.com/'),)
 
 DISPLAY_CATEGORIES_ON_MENU = False
+DISPLAY_PAGES_ON_MENU = True
+PAGE_PATHS = ['pages']
 AUTHORS_URL = False
 AUTHORS_SAVE_AS = False
 
@@ -55,3 +57,7 @@ FAVICON = 'theme/images/icons/favicon.png'
 MOBILE_CSS_FILE = 'mobile.css'
 
 IGNORE_FILES = ['.#*', 'test_*.md', 'tmp_*.md',]
+# presentations dir can contain pdfs, pandoc-generated speaker notes (ideally not just slides)
+# Otherwise canonical location for presentations is presentations repo
+STATIC_PATHS = ['images', 'presentations']
+ARTICLE_EXCLUDES = ['presentations']

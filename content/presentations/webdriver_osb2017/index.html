@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Maja Frydrychowicz" />
+  <title>Remotely Control This Browser</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <style>
+  body {
+      background: #EDEAEB;
+      color: #000305;
+      font-size: 87.5%; /* Base font size: 14px */
+      font-family: 'Open Sans', Helvetica, sans-serif;
+      line-height: 1.429;
+      padding: 20px 20px;
+      text-align: left;
+      width: 760px;
+  }
+
+  h2, h3, h4, h5, h6 {
+      font-weight: 500;
+      margin-bottom: 0em;
+      margin-top: 1.2em;
+      border: none;
+  }
+
+  .author, .date, .title, .subtitle {
+      border: none;
+      margin-top: 0.5em;
+      margin-bottom: 0em;
+  }
+
+  h2 {
+      width:100%;
+      border-bottom: 1px solid black;
+      margin-top: 2em;
+  }
+
+  a {outline: 0;  font-weight:600;}
+  a img {border: 0px; text-decoration: none;}
+  a:link, a:visited {
+      color: #990011;
+      padding: 0 1px;
+      text-decoration: none;
+  }
+  a:hover, a:active {
+      color: #000;
+  }
+
+  h1 a:hover {
+      background-color: inherit;
+      color: inherit;
+  }
+
+  .caption, figcaption, .figure {
+      text-align:center;
+  }
+
+  .mainImage, .figure {
+      text-align:center;
+      margin: 1em;
+  }
+
+  img, video, iframe {
+      max-width:80%;
+  }
+
+  div.sourceCode {
+      margin: 1em;
+  }
+  </style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Remotely Control This Browser</h1>
+<h1 class="subtitle">WebDriver and the Path to an Interoperable Web</h1>
+<h2 class="author">Maja Frydrychowicz</h2>
+<h3 class="date">Open Source Bridge 2017</h3>
+</div>
+<h2 id="hello-im-maja.">Hello, I'm Maja.</h2>
+<ul>
+<li>Software Engineer at Mozilla</li>
+<li>@impossibus</li>
+</ul>
+<div class="fragment">
+<div class="figure">
+<img src="resources/tools.png" alt="Excerpt from https://xkcd.com/1629/" />
+<p class="caption">Excerpt from https://xkcd.com/1629/</p>
+</div>
+</div>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li><a href="https://speakerdeck.com/mjzffr/remotely-control-this-browser-webdriver-and-the-path-to-an-interoperable-web">Slides</a></li>
+<li>Mozilla, non-profit behind Firefox</li>
+<li>Defends the openness of the web platform</li>
+<li>This xkcd comic is one way to describe what I do: I work on internal tools and tools that support other tools used by web developers.</li>
+<li>The tools I work on are all centered around <strong>browser automation</strong>.</li>
+<li>I will soon explain what motivates that work.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="example-of-remote-control">Example of Remote Control</h2>
+<p class="mainImage">
+<img src="resources/mntest_good.gif" alt="running tests"/>
+</p>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>First, let's agree on some context: what does browser automation look like?</li>
+<li>This gif is showing you an editor in the top half with some Python code describing browser behaviour for the purpose of functional tests. In the terminal window at the bottom, I run the tests.</li>
+<li>This causes a new browser instance to launch, load a test page, and perform a bunch of actions on the page (mostly clicks).</li>
+<li>The python script is simulating user interaction with the browser.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="web-compatibility">Web Compatibility</h2>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>Now onto our motivation: what should be web be like?</li>
+<li>A person should be able to access <em>all</em> web content with any device/platform and any browser.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="pain">Pain</h2>
+<div class="figure">
+<img src="resources/lolwebdev.png" alt="&quot;lol web development&quot; -@notwaldorf" />
+<p class="caption"><a href="https://twitter.com/notwaldorf/status/803739169231020032">&quot;lol web development&quot; -<span class="citation">@notwaldorf</span></a></p>
+</div>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>From the perspective of a web developer, cross-browser/platform support is not easy to achieve.</li>
+<li>The developer is less productive and is faced with a trade-off: spend my time getting this working for more users, or write some more features for just one browser/platform?</li>
+<li>The user suffers because they can't access content or share with everyone.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="web-predictability">Web Predictability</h2>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>Another way to think about the health of the web is in terms of <em>predictability</em>: Surprises are bad for developers.</li>
+<li>A web developer's task is made harder because their code breaks in surprising ways, including regressions that pop up months after successful deployment.</li>
+<li>What can we do to make web development less suprising?</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="web-standards-interoperable">Web Standards ➔ Interoperable</h2>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>That's what web standards are all about.</li>
+<li>Browser vendors and other interested parties come together to negotiate common ways of interacting with the web.</li>
+<li>Web developers aim to follow web standards and best practices to deliver a consistent experience to as many users as possible.</li>
+<li>These efforts help the web stay decentralized and open to new kinds of content, new ways to participate on the web.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="interoperability">Interoperability</h2>
+<p style="text-align:center">
+<strong>open</strong> instead of <strong>fragmented</strong>
+</p>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>The ideal is that anyone can come along, build something on top of this shared open platform and thereby reach all web users.</li>
+<li>On the other side of the spectrum, we can have lots of small pockets that don't interact. Imagine an extreme where building cross-browser web apps is pretty much impossible so that Android Opera users live in this slice of the web, whereas Windows Chrome only hang out in another part, etc.</li>
+<li>One example of fragmentation is the two distinct ecosystems for users of iOS and Android: App Store versus Google Play. A lot of those apps could just be web apps today, but when these platforms were first entering the market, mobile browsers weren't mature enough or consistent enough, so users were offered platform-specific apps instead.</li>
+<li>Another example of the side-effects of fragmentation: if you choose to<br />
+use a more affordable device, that may imply that you have access to very different web content.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="tools-for-a-healthy-web">Tools for a healthy web</h2>
+<p class="mainImage">
+<img src="resources/tools.png" alt="xkcd comic:tools"/>
+</p>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>These are the ideals that motivate our work on WebDriver</li>
+<li>That is, we work on browser automation because it is the basis for tools that make developing for the web easier, whether you're working on a web app or a whole browser.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="coming-up">Coming up</h2>
+<ol style="list-style-type: decimal">
+<li>Why browser automation?</li>
+<li>What is WebDriver? Selenium?</li>
+<li>How does WebDriver work in Firefox?</li>
+<li>Hey, let's add a WebDriver command to Firefox!</li>
+</ol>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>What are these tools? As promised, we'll focus on WebDriver, which is the basis for how browser automation will work in all browsers.</li>
+<li>I'll also explain the relationship with <a href="http://www.seleniumhq.org/">Selenium</a>, a popular open source project for automating browsers.</li>
+</ul>
+</blockquote>
+</div>
+<h1 id="welcome-to-browser-automation">Welcome to browser automation</h1>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>Let's get started by writing some Python code to automate Firefox.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="example">Example</h2>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">session.get(<span class="st">&quot;https://www.mozilla.org/&quot;</span>)
+link <span class="op">=</span> session.find_element_by_id(<span class="st">&quot;participate&quot;</span>)
+link.click()</code></pre></div>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>Assume <code>session</code> represents some sort of magical connection to a specific browser instance.</li>
+<li>First we make the browser navigate to <a href="https://www.mozilla.org">mozilla.org</a>.</li>
+<li>Then we search the DOM for an element with id &quot;participate&quot;, and we tell the browser to click on that element.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="turned-off-by-default">Turned off by default</h2>
+<div class="figure">
+<img src="resources/marionette1.png" alt="Visual cue in URL bar" />
+<p class="caption">Visual cue in URL bar</p>
+</div>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>Note that remote control does not affect day-to-day use of any browser.</li>
+<li>There are measures in place to restrict this capability: no one wants a third party to take control over their browser.</li>
+<li>As an extra precaution and reminder, when remote control is enabled you<br />
+will see a modified URL bar in Firefox.</li>
+<li>I think Chrome and Safari have a similar visual cue.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="why-automate">Why automate?</h2>
+<p>Testing...</p>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>Testing web apps, browser features, browser extensions</li>
+<li>Catch regressions: make sure my site's still working when I change it</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="beyond-testing">Beyond Testing</h2>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<p>WebDriver could be used:</p>
+<ul>
+<li>To make web development easier (enhance developer tools)</li>
+<li>For browser instrumentation (screenshots on failure, performance)</li>
+<li>To make it easier to report, describe and investigate web compatibility bugs</li>
+<li>Write or generate a specific, reproducible test case.</li>
+<li>To make it easier to distinguish between browser bugs and web app bugs</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="how-webdriver">How? WebDriver!</h2>
+<p class="mainImage">
+<img src="resources/WebDriverOverview.png" alt="WebDriver Overview"/>
+<p>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>WebDriver provides a communication protocol between a <em>client</em> and a<br />
+<em>browser</em>. Each kind of browser is controlled by a &quot;driver&quot; built for it.</li>
+<li>There are lots of WebDriver client libraries out there, in many different languages, but I'll provide examples using the Selenium python Client.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="webdriver-client-sends-commands-to-browser">WebDriver Client Sends Commands to Browser</h2>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">session.get(<span class="st">&quot;https://www.mozilla.org/&quot;</span>)
+link <span class="op">=</span> session.find_element_by_id(<span class="st">&quot;participate&quot;</span>)
+link.click()</code></pre></div>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>This is the same code snippet as before: it demos the Selenium Python client API.</li>
+<li>Note that the terms &quot;Selenium&quot; and &quot;Selenium WebDriver&quot; and &quot;Selenium 3&quot; are pretty-much interchangeable.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="example-talking-to-firefox">Example: Talking to Firefox</h2>
+<pre><code>pip install selenium
+export PATH=$PATH:/path/to/geckodriver</code></pre>
+<p>Automation script:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> selenium <span class="im">import</span> webdriver
+
+<span class="co"># e.g. check the web page title</span>
+session <span class="op">=</span> webdriver.Firefox()
+session.get(<span class="st">&quot;http://www.python.org&quot;</span>)
+<span class="cf">assert</span> <span class="st">&quot;Python&quot;</span> <span class="kw">in</span> session.title
+session.close()</code></pre></div>
+<div class="notes">
+<blockquote>
+<p>Notes</p>
+<ul>
+<li>Use a new version of Selenium WebDriver (&gt; 3.3.1)</li>
+<li>geckodriver program that allows Selenium to talk to Firefox. You'll learn more about it later.</li>
+<li><code>webdriver.Firefox()</code> is starting a <em>WebDriver session</em>: this takes care of starting the browser in &quot;remote control&quot; mode, as well as, setting relevant browser prefs that are more suitable for automation such as: do not warn when closing all tabs, don't show UI tour, don't run browser updates.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="open-source-project-to-web-standard"><span class="longHeading">✨open source project to web standard!✨</span></h2>
+<p style="text-align:center; font-size:0.78em">
+Selenium WebDriver ➔ W3C WebDriver Standard
+</p>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>This browser-automation idea started a long time ago with open source software that today is called Selenium WebDriver. Originally, the Selenium community maintained both the clients and the individual drivers for each browser.</li>
+<li>Each browser driver has to be implemented differently in a way that best suited that particular browser. For example, FirefoxDriver was a Firefox add-on.</li>
+<li>The project was very popular, especially of web testing. Gradually, browser vendors started implementing their own &quot;drivers&quot; to receive commands from Selenium. This makes a lot of sense: it's good for the web (see all our motivation about interoperability, etc.) and it's certainly easier for browser vendors to maintain their own drivers, since they are familiar with browser internal, etc. (It's kind of amazing that the Selenium community maintained a whole bunch of browser drivers on their own for so long.)</li>
+<li>Then the W3C agreed that it should become a web standard so that all browsers implement WebDriver consistently. For something to become a standard, you need at least two independent implementations (✅) and a specification. The specification is pretty-much written now (✅).</li>
+</ul>
+<p>What does this imply?</p>
+<ul>
+<li>Write one automation script in your favourite language</li>
+<li>Run your script against any/all browsers</li>
+<li>Now we're in a transition period: from Selenium WebDriver with old drivers to new spec-compliant divers.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="each-webdriver-command-is-an-http-request-with-a-json-payload">Each WebDriver command is an HTTP request with a JSON payload</h2>
+<ul>
+<li><code>POST /session/&lt;id&gt;/window/maximize</code><br />
+</li>
+<li><code>POST /session/&lt;id&gt;/element</code><br />
+</li>
+<li><code>GET  /session/&lt;id&gt;/title</code></li>
+<li><code>GET  /session/&lt;id&gt;/screenshot</code></li>
+</ul>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>This list doesn't show any payloads, see next slide.</li>
+<li>The <code>&lt;id&gt;</code> refers to the WebDriver session that is connecting your client a particular browser instance. Before you send any commands, you have to establish a session. When you're done, you end the session.</li>
+<li>We'll see examples in a moment.</li>
+<li>List of <a href="https://www.w3.org/TR/webdriver/#h-list-of-endpoints">all commands</a></li>
+</ul>
+</blockquote>
+</div>
+<h2 id="webdriver-protocol">WebDriver Protocol</h2>
+<p>Request: please navigate to mozilla.org</p>
+<pre><code>POST /session/0152f...a9e8/url
+{&quot;url&quot;: &quot;https://www.mozilla.org/&quot;}</code></pre>
+<p>Response: command was successful!</p>
+<pre><code>Status: 200
+Data: {}</code></pre>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>Sending a POST request to the <code>url</code> endpoint means: &quot;please navigate somehwere&quot;</li>
+<li>The command is for session <code>0152f...a9e8</code> with one parameter: <code>url = https://www.mozilla.org/</code></li>
+<li>The JSON payload is <code>{&quot;url&quot;: &quot;https://www.mozilla.org/&quot;}</code></li>
+<li>If the command is successful (the navigation completes), the driver will respond with a status of 200 and no data. <em>Note that the 200 shown here is from the driver; the HTTP server response from mozilla.org is a different concept.</em></li>
+</ul>
+</blockquote>
+</div>
+<h2 id="spec-implementation-status">Spec Implementation Status</h2>
+<p style="text-align:center">
+How many WebDriver commands work in each browser?
+</p>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>All majors browser vendors are working on implementing the WebDriver specification.</li>
+<li>Firefox is the most spec-compliant now; there's a dedicated team working on it.</li>
+<li>There are also Web Platform Tests (see next slide) for WebDriver, which helps browsers implement the spec consistently/correctly.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="aside-web-platform-tests">Aside: Web Platform Tests</h2>
+<div class="figure">
+<img src="resources/wpt.png" alt="testthewebforward.org" />
+<p class="caption"><a href="https://www.testthewebforward.org">testthewebforward.org</a></p>
+</div>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>The W3C Web Platform Tests is a suite of tests that accompany all web standards (not just WebDriver). They are shared by all browser vendors to coordinate the effort toward web predictability.</li>
+<li>As different browser vendors implement standards, they can contribute<br />
+tests for everyone else to use.</li>
+<li>The tests are run against all browsers: measure how spec-compliant they are, detect when something breaks.</li>
+<li>Volunteer contributions are welcome.</li>
+</ul>
+</blockquote>
+</div>
+<h1 id="webdriver-in-firefox">WebDriver in Firefox</h1>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<p>Now we'll take a deeper dive into the components that make the WebDriver protocol work in Firefox.</p>
+</blockquote>
+</div>
+<h2 id="geckodriver-marionette">geckodriver + Marionette</h2>
+<p class="mainImage">
+<img src="resources/FxWebDriver.png" alt="WebDriver in Firefox"/>
+</p>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>A WebDriver client sends JSON over HTTP to geckodriver, geckodriver translates that into a custom socket-based protocol understood by Firefox. geckodriver is written in Rust.</li>
+<li><em>Marionette</em> is the component within Firefox that responds to WebDriver commands. It is kind of like a Firefox addon with access to privileged, internal APIs. Marionette is written in JavaScript.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="firefox-why-not-json-over-http">Firefox: Why not JSON over HTTP?</h2>
+<p style="text-align:center">
+Based on existing remote debugging protocol instead.
+</p>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>When initially developing Marionette, it made more sense to take advantage of an existing method to communicate with the browser rather than reinvent the wheel.</li>
+<li>Chrome works in a similar way.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="youve-started-a-webdriver-session.-what-happens-when-you-send-the-get-title-command">You've started a WebDriver session. What happens when you send the &quot;Get Title&quot; command?</h2>
+<pre><code>print session.title</code></pre>
+<h2 id="processing-a-command-1">Processing a Command (1)</h2>
+<h3 id="client">Client</h3>
+<div style="height:50px">
+
+</div>
+<p>Send HTTP request to geckodriver</p>
+<pre><code>GET     /session/&lt;session id&gt;/title</code></pre>
+<h2 id="processing-a-command-2">Processing a Command (2)</h2>
+<h3 id="geckodriver">geckodriver</h3>
+<div style="height:50px">
+
+</div>
+<p>Translate and send to Marionette</p>
+<p>The result is a message in the format <strong><length>:<JSON string></strong></p>
+<pre><code>30:[0, 21, &quot;getTitle&quot;, null]</code></pre>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>30 refers to the length of <code>[0, 21, &quot;getTitle&quot;, null]</code></li>
+<li>0 is the message type (request)</li>
+<li>21 is the message id</li>
+<li>Marionette has to respond in sequence. Responses are synchronous, sent in order, but requests are async and need to be distinguished by id.</li>
+<li>&quot;getTitle&quot; is the name of the command in Marionette</li>
+<li>null means there are no parameters.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="quick-peek-inside-geckodriver">Quick peek inside geckodriver</h2>
+<div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust">(Get, <span class="st">&quot;/session/{sessionId}/title&quot;</span>,
+ Route::GetTitle)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust">GetTitle =&gt; (<span class="cn">Some</span>(<span class="st">&quot;getTitle&quot;</span>), <span class="cn">None</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">impl</span> ToJson <span class="kw">for</span> MarionetteCommand <span class="op">{</span>
+    <span class="kw">fn</span> to_json(&amp;<span class="kw">self</span>) -&gt; Json <span class="op">{</span>
+        Json::Array(<span class="pp">vec!</span><span class="op">[</span>Json::U64(<span class="dv">0</span>),
+                         <span class="kw">self</span>.id.to_json(),
+                         <span class="kw">self</span>.name.to_json(),
+                         <span class="kw">self</span>.params.to_json()<span class="op">]</span>)
+    <span class="op">}</span>
+<span class="op">}</span></code></pre></div>
+<div class="notes">
+<blockquote>
+<p>Notes: these are simplified excerpts from <a href="https://hg.mozilla.org/mozilla-central/file/tip/testing/geckodriver/src/marionette.rs">geckodriver</a> and a supporting library, <a href="https://github.com/mozilla/webdriver-rust/blob/master/src/command.rs">webdriver-rust</a></p>
+<ol style="list-style-type: decimal">
+<li>Map the <code>title</code> endpoint to GetTitle</li>
+<li>Translate to a Marionette command: <code>getTitle</code></li>
+<li>Construct a 4-part request as expected by Marionette: [0, id, name, params]</li>
+</ol>
+</blockquote>
+</div>
+<h2 id="processing-a-command-3">Processing a Command (3)</h2>
+<h3 id="marionette">Marionette</h3>
+<div style="height:50px">
+
+</div>
+<p>Parse stream of incoming packets (e.g. from geckodriver)</p>
+<p>Request parsed into JSON: type, id, method, params</p>
+<pre><code>[0,21,&quot;getTitle&quot;,{}]</code></pre>
+<h2 id="processing-a-command-4">Processing a Command (4)</h2>
+<h3 id="marionette-1">Marionette</h3>
+<div style="height:50px">
+
+</div>
+<p>Dispatch <code>cmd</code> (&quot;getTitle&quot;) to the right driver method</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="at">execute</span>(cmd) <span class="op">{</span>
+  <span class="kw">let</span> fn <span class="op">=</span> <span class="kw">this</span>.<span class="va">driver</span>.<span class="at">commands</span>[<span class="va">cmd</span>.<span class="at">name</span>]<span class="op">;</span>
+  <span class="cf">if</span> (<span class="kw">typeof</span> fn <span class="op">==</span> <span class="st">&quot;undefined&quot;</span>) <span class="op">{</span>
+    <span class="cf">throw</span> <span class="kw">new</span> <span class="at">UnknownCommandError</span>(<span class="va">cmd</span>.<span class="at">name</span>)<span class="op">;</span>
+  <span class="op">}</span>
+  <span class="kw">let</span> rv <span class="op">=</span> <span class="kw">yield</span> <span class="va">fn</span>.<span class="at">bind</span>(<span class="kw">this</span>.<span class="at">driver</span>)(cmd<span class="op">,</span> resp)<span class="op">;</span>
+  <span class="co">// send resp</span>
+<span class="op">}</span></code></pre></div>
+<div class="notes">
+<blockquote>
+<p>Notes: this is a simplified excerpt from <a href="https://dxr.mozilla.org/mozilla-central/rev/c01aa84ded7eb0b3e691f8bcc5cd887c960a779e/testing/marionette/server.js#505">marionette</a></p>
+</blockquote>
+</div>
+<h2 id="processing-a-command-5">Processing a Command (5)</h2>
+<h3 id="marionette-2">Marionette</h3>
+<div style="height:50px">
+
+</div>
+<p>Perform browser interaction to compute response.</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">getTitle</span>() <span class="op">{</span>
+  <span class="cf">return</span> <span class="va">curContainer</span>.<span class="va">frame</span>.<span class="va">top</span>.<span class="va">document</span>.<span class="at">title</span><span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+<p>Example response: type, id, error, result</p>
+<pre><code>[1,21,null,{&quot;value&quot;:&quot;Cats in Boxes&quot;}]</code></pre>
+<blockquote>
+<p>Notes: excerpt from <a href="https://dxr.mozilla.org/mozilla-central/source/testing/marionette/listener.js">listener.js</a></p>
+</blockquote>
+<ul>
+<li>1 is the message type: now it's a response (versus 0, which is a request)</li>
+<li>21 is the id that matches the original request</li>
+<li>null means there's no error</li>
+</ul>
+<h2 id="processing-a-command-6">Processing a Command (6)</h2>
+<div style="height:50px">
+
+</div>
+<p>Finally, the response is sent back, translated by geckodriver to JSON-over-HTTP:</p>
+<pre><code>Status: 200
+Data: {&quot;value&quot;:&quot;Cats in Boxes&quot;}</code></pre>
+<h1 id="implementing-a-command">Implementing a Command</h1>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<p>Most WebDriver commands are functional in Firefox -- many were implemented years ago -- but not all of them are spec-compliant yet. This is also true of other browsers: the commands work, but not consistently. By &quot;implementing a command&quot;, I mean modifying or rewriting parts of Marionette to make it follow the WebDriver spec. It's an interesting tasks because you end up interacting with spec authors, digging into other web standards (like UI events), comparing with other browsers and trying to reconcile what the browser should actually do in response to a command.</p>
+</blockquote>
+</div>
+<h2 id="example-the-actions-command">Example: The &quot;Actions&quot; Command</h2>
+<p>POST /session/&lt;id&gt;/actions</p>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span><span class="dt">&quot;actions&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="fu">{</span>
+  <span class="dt">&quot;parameters&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;pointerType&quot;</span><span class="fu">:</span> <span class="st">&quot;mouse&quot;</span><span class="fu">},</span>
+  <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;pointer&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="st">&quot;myMouse&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;actions&quot;</span><span class="fu">:</span> <span class="ot">[</span>
+    <span class="fu">{</span><span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;pointerMove&quot;</span><span class="fu">,</span> <span class="dt">&quot;y&quot;</span><span class="fu">:</span> <span class="dv">10</span><span class="fu">,</span> <span class="dt">&quot;x&quot;</span><span class="fu">:</span> <span class="dv">80</span><span class="fu">,</span>
+     <span class="dt">&quot;duration&quot;</span><span class="fu">:</span> <span class="dv">50</span><span class="fu">}</span><span class="ot">,</span>
+    <span class="fu">{</span><span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;pointerDown&quot;</span><span class="fu">,</span> <span class="dt">&quot;button&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">}</span><span class="ot">,</span>
+    <span class="fu">{</span><span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;pointerUp&quot;</span><span class="fu">,</span> <span class="dt">&quot;button&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">}</span>
+  <span class="ot">]</span>
+<span class="fu">}</span><span class="ot">]</span><span class="fu">}</span></code></pre></div>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>I'll describe what I had to do to implement the Actions command.</li>
+<li>The above request describes a sequence of steps to perform with a mouse: move the pointer to coordinates (80, 10) on the page in 50 ms, press the primary button, release the primary button.</li>
+<li>In general, actions commands are meant to describe a timeline of input device behaviour.</li>
+<li>The above shows a 1-layer timeline: just a mouse. You could instead describe many devices (many layers) doing different things simultaneously, like a mouse and keyboard, or two finders on a touch screen.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="read-the-spec">Read the spec</h2>
+<div class="figure">
+<img src="resources/actionsSpec.png" alt="https://www.w3.org/TR/webdriver/" />
+<p class="caption"><a href="https://www.w3.org/TR/webdriver/">https://www.w3.org/TR/webdriver/</a></p>
+</div>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>This small piece of the WebDriver Actions spec gives you a taste of specification language and level of detail.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="read-the-spec-1">Read the spec</h2>
+<ul>
+<li>Spec describes what should happen and often how (at a high level)</li>
+<li>Not set in stone: clarify and discuss as we implement</li>
+</ul>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>The spec describes algorithms at a high-level</li>
+<li>Additional decisions left up to the implementor: data representation,<br />
+optimizations, use of programming language features.</li>
+<li>Details, edge cases may still be missing.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="write-web-platform-tests">Write web-platform tests</h2>
+<p>Examples:</p>
+<ul>
+<li>Invalid payload is rejected with the correct kind of error.</li>
+<li>pointerDown followed by pointerUp results in expected events.</li>
+<li>pointerMove ends up at correct coordinates.</li>
+</ul>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>Typically, each <a href="https://github.com/w3c/web-platform-tests/tree/master/webdriver/actions">test</a> loads a document, performs a request, compares the result to what we'd expect to see if an actual human were interacting with the document.</li>
+<li>As a result, writing webdriver spec tests involves a mix of python (the actual test), as well as some JavaScript to introspect what's happening in the web document.</li>
+<li>You also need to hook up the webdriver test client <a href="https://github.com/w3c/web-platform-tests/blob/master/tools/webdriver/webdriver/client.py#L75">to your new command</a>.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="add-to-marionette-geckodriver">Add to marionette + geckodriver</h2>
+<p style="text-align:center">
+First, parse and validate the command payload
+</p>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>See <a href="https://dxr.mozilla.org/mozilla-central/source/testing/marionette/action.js#785">action.Sequence</a></li>
+</ul>
+</blockquote>
+</div>
+<h2 id="control-the-order-of-dom-events">Control the order of DOM events</h2>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="va">action</span>.<span class="at">dispatch</span> <span class="op">=</span> <span class="kw">function</span> (chain<span class="op">,</span> ...) <span class="op">{</span>
+  <span class="kw">let</span> chainEvents <span class="op">=</span> <span class="va">Task</span>.<span class="at">spawn</span>(<span class="kw">function</span><span class="op">*</span> () <span class="op">{</span>
+    <span class="cf">for</span> (<span class="kw">let</span> tickActs of chain) <span class="op">{</span>
+      <span class="kw">yield</span> <span class="va">action</span>.<span class="at">dispatchTickActions</span>(
+          tickActs<span class="op">,</span>
+          <span class="va">action</span>.<span class="at">computeTickDuration</span>(tickActs)<span class="op">,</span>
+          ...)<span class="op">;</span>
+    <span class="op">}</span>
+  <span class="op">}</span>)<span class="op">;</span>
+  <span class="cf">return</span> chainEvents<span class="op">;</span>
+<span class="op">};</span></code></pre></div>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>Excerpt from <a href="https://dxr.mozilla.org/mozilla-central/rev/c01aa84ded7eb0b3e691f8bcc5cd887c960a779e/testing/marionette/action.js#941">action.dispatch</a></li>
+<li>Recall our previous description of the multi-layer timeline for all input devices.</li>
+<li>The idea is to divide this timeline into discrete ticks (points in time) and trigger all the events for one tick simultaneously and asynchronously. When all the events for the first tick are done (keyboard, mouse, etc), then trigger all the events for the second tick, and so on.</li>
+<li>From the client's perspective, the action command doesn't return a response until all the events in the sequence are complete.</li>
+<li>This is implemented in Marionette with Promises.</li>
+</ul>
+</blockquote>
+</div>
+<h1 id="what-next">What next?</h1>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<p>Now you have an overview of WebDriver, browser automation, why it's important for the health of the web, how it works in Firefox, and how to approach adding a new command. What can do you do with this knowledge? Work with us on fun browser bugs, help improve WebDriver, and help with web predictability!</p>
+</blockquote>
+</div>
+<h2 id="ways-to-contribute">Ways to contribute</h2>
+<ol style="list-style-type: decimal">
+<li>Use <strong>Selenium &gt;3.3.1</strong> with <strong>geckodriver</strong> + <strong>Firefox Nightly</strong> then file new issues on Github</li>
+<li>Test-drive documentation, help us clarify/update</li>
+</ol>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>Use Selenium to test your web app, <a href="https://github.com/mozilla/geckodriver">report issues</a> with detailed logs, steps to reproduce</li>
+<li>Documentation to try out: <a href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/WebDriver">using geckodriver</a> and <a href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/Developer_setup">Marionette developer setup</a></li>
+</ul>
+</blockquote>
+</div>
+<h2 id="ways-to-contribute-1">Ways to contribute</h2>
+<ol start="4" style="list-style-type: decimal">
+<li>Write spec tests <strong>(Python, pytest, JS)</strong></li>
+<li>Work on bugs in spec implementation <strong>(JS, Rust)</strong></li>
+<li>Tackle some Mozilla test-harness bugs <strong>(Python)</strong></li>
+</ol>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>Example of adding webdriver spec tests: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1357590">Bug 1357590</a></li>
+<li>A good entry point for working on spec implementation bugs is in<br />
+<a href="https://github.com/mozilla/geckodriver/issues">geckodriver issues</a>, some of which need to be fixed in Marionette. Or if you report a new issue, you might enjoy figuring out how to fix it.</li>
+<li>For Mozilla test-harness bugs, take a look at <a href="https://www.joshmatthews.net/bugsahoy/?automation=1&amp;py=1">Bugs Ahoy</a></li>
+</ul>
+</blockquote>
+</div>
+<h2 id="remotely-control-this-browser-to-make-a-better-web">Remotely control this browser to make a better Web ❤️🤖</h2>
+<div class="notes">
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>Achieving and maintaining web predictability is a huge amount of work</li>
+<li>How do you maximize progress? Eliminate friction! Make collaboration a breeze! Multiply everyone's efforts with automation!</li>
+<li>WebDriver enables a whole class of tools to ease all the work around web compatibility, yay.</li>
+</ul>
+</blockquote>
+</div>
+<h2 id="thanks">Thanks!</h2>
+<p>I'm Maja Frydrychowicz. Contact:</p>
+<ul>
+<li>IRC: <strong>maja_zf</strong> on irc.mozilla.org and irc.w3.org</li>
+<li>@impossibus</li>
+</ul>
+<p class="mainImage">
+<img src="resources/moz-logo-bw-rgb.png" alt="mozilla"/>
+</p>
+<h2 id="resources">Resources</h2>
+<div class="resources">
+<p>#ateam channel on irc.mozilla.org</p>
+<ul>
+<li><a href="https://wiki.mozilla.org/User:Mjzffr/New_Contributors" class="uri">https://wiki.mozilla.org/User:Mjzffr/New_Contributors</a>
+<ul>
+<li><a href="http://www.erranderr.com/blog/webdriver-ontology.html" class="uri">http://www.erranderr.com/blog/webdriver-ontology.html</a></li>
+<li><a href="http://vakila.github.io/blog/marionette-act-i-automation/" class="uri">http://vakila.github.io/blog/marionette-act-i-automation/</a></li>
+</ul></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/WebDriver" class="uri">https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/WebDriver</a></li>
+<li><a href="https://github.com/mozilla/geckodriver" class="uri">https://github.com/mozilla/geckodriver</a>
+<ul>
+<li><a href="https://github.com/mozilla/webdriver-rust" class="uri">https://github.com/mozilla/webdriver-rust</a></li>
+</ul></li>
+<li><a href="https://github.com/w3c/web-platform-tests/tree/master/webdriver" class="uri">https://github.com/w3c/web-platform-tests/tree/master/webdriver</a></li>
+</ul>
+</div>
+</body>
+</html>
